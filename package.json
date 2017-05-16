@@ -1,0 +1,8 @@
+{
+  "name": "react-zero-to-one",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ThoughtWorksWuhanUI/react-zero-to-one.git",
+  "author": "benweizhu <benweizhu@gmail.com>",
+  "license": "MIT"
+}
