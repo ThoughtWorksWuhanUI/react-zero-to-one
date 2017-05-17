@@ -16,7 +16,14 @@ const config = {
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({ template: './app/index.html' })
-  ]
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    host: "0.0.0.0",
+    port: 9000,
+    hot: true
+  }
 };
 
 module.exports = config;
