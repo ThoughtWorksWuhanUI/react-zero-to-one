@@ -1,10 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-class HelloMessage extends React.Component {
-  render() {
-    return <div>Hello, {this.props.message}</div>;
-  }
-}
+import HelloMessage from './components/HelloMessage';
 
 ReactDOM.render(<HelloMessage message="My First React App" />, document.body);
