@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TopNav from './components/TopNav';
+import HomePage from './containers/HomePage';
 import 'normalize.css';
 
-ReactDOM.render(<TopNav/>, document.body);
+ReactDOM.render(<HomePage/>, document.body);
