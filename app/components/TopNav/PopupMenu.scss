@@ -10,15 +10,7 @@
 
     li {
         display: block;
-        padding: 16px 0;
         color: #484848;
-        border-bottom: 1px solid transparent;
-        border-color: #F2F2F2;
-        margin: 0 16px;
-
-        &:hover {
-            border-color: #767676;
-        }
 
         a {
             display: block;
@@ -29,6 +21,17 @@
             font-size: 15px;
             line-height: 18px;
             letter-spacing: 0.2px;
+            padding: 0 16px;
+
+            div {
+                border-bottom: 1px solid transparent;
+                padding: 16px 0;
+                border-color: #F2F2F2;
+
+                &:hover {
+                    border-color: #767676;
+                }
+            }
         }
     }
 }
