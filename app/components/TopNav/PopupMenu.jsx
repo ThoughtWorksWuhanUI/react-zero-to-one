@@ -11,7 +11,7 @@ class PopupMenu extends React.PureComponent {
       <div className={cx('container', this.props.className)}>
         <ul>
           {
-            this.props.links.map(link => (<li><a href={link.href}>{link.title}</a></li>))
+            this.props.links.map(link => (<li key={`pop-mnu-li${link.id}`}><a href={link.href}>{link.title}</a></li>))
           }
         </ul>
       </div>);

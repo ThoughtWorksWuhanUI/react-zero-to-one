@@ -1,0 +1,56 @@
+.container {
+    background-color: #ffffff;
+    border: 1px solid #DBDBDB;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    min-width: 282px;
+    max-width: 460px;
+    min-height: 60px;
+    right: 0px;
+    top: 40px;
+
+    li {
+        display: block;
+        padding: 16px 0;
+        color: #484848;
+        border-bottom: 1px solid transparent;
+        border-color: #F2F2F2;
+        margin: 0 16px;
+
+        &:hover {
+            border-color: #767676;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            color: #767676;
+            font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+            word-wrap: break-word;
+            font-size: 15px;
+            line-height: 18px;
+            letter-spacing: 0.2px;
+        }
+    }
+}
+
+.container:after, .container:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 226px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.container:after {
+    top: -22px;
+    border-color: transparent transparent white transparent;
+    border-width: 11px;
+}
+
+.container:before {
+    top: -23px;
+    border-color: transparent transparent #DBDBDB transparent;
+    border-width: 11px;
+}
