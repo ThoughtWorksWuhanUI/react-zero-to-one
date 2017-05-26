@@ -28,7 +28,9 @@ class TopNav extends React.Component {
             <ul>
               <li>
                 <button onClick={this.handleShowLandlordMenu}>成为房东</button>
-                <PopupMenu className={cx('landlord-menu', { 'hidden': !this.state.showLandlordMenu })} />
+                <PopupMenu
+                  className={cx('landlord-menu', { 'hidden': !this.state.showLandlordMenu })}
+                  links={[{ title: '出租房源', href: '' }, { title: '展开体验', href: '' }]} />
               </li>
               <li><button>帮助</button></li>
               <li><button>注册</button></li>
