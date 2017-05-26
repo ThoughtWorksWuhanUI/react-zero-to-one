@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HelloMessage from './components/HelloMessage';
+import TopNav from './components/TopNav';
+import 'normalize.css';
 
-ReactDOM.render(<HelloMessage message="My First React App" />, document.body);
+ReactDOM.render(<TopNav/>, document.body);
