@@ -13,9 +13,9 @@ class TopNav extends React.Component {
     };
   }
 
-  handleShowLandlordMenu = () => {
+  toggleShowLandlordMenu = (toggleOff = false) => {
     this.setState({
-      showLandlordMenu: !this.state.showLandlordMenu
+      showLandlordMenu: !toggleOff && !this.state.showLandlordMenu
     });
   }
 
@@ -27,7 +27,7 @@ class TopNav extends React.Component {
           <nav>
             <ul>
               <li>
-                <button onClick={this.handleShowLandlordMenu} onBlur={this.handleShowLandlordMenu}>成为房东</button>
+                <button onClick={() =>this.toggleShowLandlordMenu()} onBlur={() => this.toggleShowLandlordMenu(true)}>成为房东</button>
                 <PopupMenu
                   className={cx('landlord-menu', { 'hidden': !this.state.showLandlordMenu })}
                   links={[{ id: 1, title: '出租房源', href: '' }, { id: 2, title: '展开体验', href: '' }]}
