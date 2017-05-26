@@ -27,6 +27,7 @@
     li {
         display: inline-block;
         list-style: none;
+        position: relative;
 
         button {
             background: transparent;
@@ -43,4 +44,12 @@
             }
         }
     }
+}
+
+.hidden {
+  display: none;
+}
+
+.landlord-menu {
+  position: absolute;
 }
