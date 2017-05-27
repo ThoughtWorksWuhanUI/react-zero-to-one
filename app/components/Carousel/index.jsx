@@ -18,6 +18,7 @@ class Carousel extends React.Component {
     };
     return (
       <div className={cx('container', this.props.className)}>
+        <h3>{this.props.title}</h3>
         <Slider {...settings}>
           <div>
             <div className={cx('item')}>
@@ -73,5 +74,9 @@ class Carousel extends React.Component {
     );
   }
 };
+
+Carousel.propTypes = {
+  title: React.PropTypes.string
+}
 
 export default Carousel;

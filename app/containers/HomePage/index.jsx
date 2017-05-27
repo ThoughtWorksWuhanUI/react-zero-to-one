@@ -10,7 +10,7 @@ class HomePage extends React.Component {
       <div>
         <TopNav />
         <Hero />
-        <Carousel />
+        <Carousel title= "热门体验"/>
       </div>
     );
   }

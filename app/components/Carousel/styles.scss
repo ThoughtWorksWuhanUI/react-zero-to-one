@@ -7,11 +7,22 @@
         max-height: 100%;
     }
 
+    h3 {
+        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+        font-size: 28px;
+        line-height: 36px;
+        letter-spacing: -0.6px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        color: #484848;
+        font-weight: 700;
+    }
+
     :global {
         .slick-prev {
             &:before {
                 content: " ";
-                background-image: url('./preview-arrow.svg');
+                background-image: url("./preview-arrow.svg");
                 background-repeat: no-repeat;
                 background-position: center center;
                 height: 24px;
@@ -25,7 +36,7 @@
         .slick-next {
             &:before {
                 content: " ";
-                background-image: url('./next-arrow.svg');
+                background-image: url("./next-arrow.svg");
                 background-repeat: no-repeat;
                 background-position: center center;
                 height: 24px;
