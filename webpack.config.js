@@ -15,6 +15,12 @@ const config = {
     rules: [
       { test: /\.(js|jsx)$/, use: 'babel-loader' },
       {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          'file-loader'
+        ]
+      },
+      {
         test: /\.scss$/,
         use: [{
           loader: "style-loader"
