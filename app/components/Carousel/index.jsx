@@ -1,6 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 import classNames from 'classnames/bind';
+import axios from 'axios';
 import styles from './styles.scss';
 
 import 'slick-carousel/slick/slick.css'
@@ -10,6 +11,13 @@ const cx = classNames.bind(styles);
 
 class Carousel extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: []
+    };
+  }
+
   renderStar = (rankingCount) => {
     let j = 1;
     const stars = [];
@@ -18,6 +26,36 @@ class Carousel extends React.Component {
     }
     return stars;
   }
+
+  renderCarousel = (settings) => {
+    if (this.state.items.length === 0) return null;
+    return (
+      <Slider {...settings}>
+        {
+          this.state.items.map((item) => (
+            <div>
+              <div className={cx('item')}>
+                <img src={item.image} />
+                <div className={cx('description')}><span className={cx('price')}>${item.price}</span>{item.name}</div>
+                <div className={cx('comments')}><span>{this.renderStar(item.ranking)}</span><span className={cx('count')}>{item.commentsCount}则评价</span></div>
+              </div>
+            </div>
+          ))
+        }
+      </Slider>
+    );
+  }
+
+  componentDidMount() {
+    axios.get(this.props.url)
+      .then((response) => {
+        this.setState({ items: response.data })
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   render() {
     var settings = {
       infinite: false,
@@ -29,59 +67,7 @@ class Carousel extends React.Component {
     return (
       <div className={cx('container', this.props.className)}>
         <h3>{this.props.title}</h3>
-        <Slider {...settings}>
-          <div>
-            <div className={cx('item')}>
-              <img src='https://a0.muscache.com/im/pictures/b7508c4c-eec0-4857-b218-ecf653cc0736.jpg?aki_policy=poster' />
-              <div className={cx('description')}>
-                <span className={cx('price')}>$293HKD</span>Take the slot you're going to remember what you will going through.
-              </div>
-              <div className={cx('comments')}><span>{this.renderStar(5)}</span><span className={cx('count')}>33则评价</span></div>
-            </div>
-          </div>
-          <div>
-            <div className={cx('item')}>
-              <img src='https://a0.muscache.com/im/pictures/b7508c4c-eec0-4857-b218-ecf653cc0736.jpg?aki_policy=poster' />
-              <div>Price</div>
-              <div>Star</div>
-            </div>
-          </div>
-          <div>
-            <div className={cx('item')}>
-              <img src='https://a0.muscache.com/im/pictures/b7508c4c-eec0-4857-b218-ecf653cc0736.jpg?aki_policy=poster' />
-              <div>Price</div>
-              <div>Star</div>
-            </div>
-          </div>
-          <div>
-            <div className={cx('item')}>
-              <img src='https://a0.muscache.com/im/pictures/b7508c4c-eec0-4857-b218-ecf653cc0736.jpg?aki_policy=poster' />
-              <div>Price</div>
-              <div>Star</div>
-            </div>
-          </div>
-          <div>
-            <div className={cx('item')}>
-              <img src='https://a0.muscache.com/im/pictures/b7508c4c-eec0-4857-b218-ecf653cc0736.jpg?aki_policy=poster' />
-              <div>Price</div>
-              <div>Star</div>
-            </div>
-          </div>
-          <div>
-            <div className={cx('item')}>
-              <img src='https://a0.muscache.com/im/pictures/b7508c4c-eec0-4857-b218-ecf653cc0736.jpg?aki_policy=poster' />
-              <div>Price</div>
-              <div>Star</div>
-            </div>
-          </div>
-          <div>
-            <div className={cx('item')}>
-              <img src='https://a0.muscache.com/im/pictures/b7508c4c-eec0-4857-b218-ecf653cc0736.jpg?aki_policy=poster' />
-              <div>Price</div>
-              <div>Star</div>
-            </div>
-          </div>
-        </Slider>
+        {this.renderCarousel(settings)}
       </div>
     );
   }

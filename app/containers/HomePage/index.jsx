@@ -10,7 +10,7 @@ class HomePage extends React.Component {
       <div>
         <TopNav />
         <Hero />
-        <Carousel title= "热门体验"/>
+        <Carousel title= "热门体验" url="http://react0to1.getsandbox.com/airbnb/experiences"/>
       </div>
     );
   }

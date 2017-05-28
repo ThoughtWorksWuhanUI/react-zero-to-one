@@ -10,6 +10,7 @@
     "dev": "webpack-dev-server --hot"
   },
   "dependencies": {
+    "axios": "^0.16.1",
     "classnames": "^2.2.5",
     "normalize.css": "^7.0.0",
     "react": "^15.5.4",
