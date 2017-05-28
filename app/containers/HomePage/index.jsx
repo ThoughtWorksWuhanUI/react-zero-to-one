@@ -10,7 +10,7 @@ class HomePage extends React.Component {
       <div>
         <TopNav />
         <Hero />
-        <Carousel title= "热门体验" url="http://react0to1.getsandbox.com/airbnb/experiences"/>
+        <Carousel title= "热门体验" url="https://raw.githubusercontent.com/ThoughtWorksWuhanUI/react-zero-to-one/master/mock_data/experiences.json"/>
       </div>
     );
   }

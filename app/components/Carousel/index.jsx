@@ -27,17 +27,23 @@ class Carousel extends React.Component {
     return stars;
   }
 
-  renderCarousel = (settings) => {
-    if (this.state.items.length === 0) return null;
+  renderCarousel = (settings, items) => {
+    if (items.length === 0) return null;
     return (
       <Slider {...settings}>
         {
-          this.state.items.map((item) => (
-            <div>
+          items.map((item, index) => (
+            <div key={`carousel-item-${item.name}-${index}`}>
               <div className={cx('item')}>
                 <img src={item.image} />
-                <div className={cx('description')}><span className={cx('price')}>${item.price}</span>{item.name}</div>
-                <div className={cx('comments')}><span>{this.renderStar(item.ranking)}</span><span className={cx('count')}>{item.commentsCount}则评价</span></div>
+                <div className={cx('description')}>
+                  <span className={cx('price')}>${item.price}</span>
+                  {item.name}
+                </div>
+                <div className={cx('comments')}>
+                  <span>{this.renderStar(item.ranking)}</span>
+                  <span className={cx('count')}>{item.commentsCount}则评价</span>
+                </div>
               </div>
             </div>
           ))
@@ -67,7 +73,7 @@ class Carousel extends React.Component {
     return (
       <div className={cx('container', this.props.className)}>
         <h3>{this.props.title}</h3>
-        {this.renderCarousel(settings)}
+        {this.renderCarousel(settings, this.state.items)}
       </div>
     );
   }
