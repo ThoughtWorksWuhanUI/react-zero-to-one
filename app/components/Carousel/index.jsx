@@ -14,7 +14,8 @@ class Carousel extends React.Component {
       infinite: false,
       speed: 500,
       slidesToShow: 5,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      draggable: false
     };
     return (
       <div className={cx('container', this.props.className)}>
@@ -23,7 +24,9 @@ class Carousel extends React.Component {
           <div>
             <div className={cx('item')}>
               <img src='https://a0.muscache.com/im/pictures/b7508c4c-eec0-4857-b218-ecf653cc0736.jpg?aki_policy=poster' />
-              <div>Price</div>
+              <div className={cx('description')}>
+                <span className={cx('price')}>$293HKD</span>Take the slot you're going to remember what you will going through.
+              </div>
               <div>Star</div>
             </div>
           </div>
