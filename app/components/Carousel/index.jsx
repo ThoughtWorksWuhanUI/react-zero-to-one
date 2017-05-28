@@ -28,10 +28,10 @@ class Carousel extends React.Component {
       });
   }
 
-  renderStar = (rankingCount) => {
+  renderRankingStar = (ranking) => {
     let j = 1;
     const stars = [];
-    for (; j <= rankingCount; j++) {
+    for (; j <= ranking; j++) {
       stars.push(<i key={`ranting-${j}`} className={cx('star')} />);
     }
     return stars;
@@ -51,7 +51,7 @@ class Carousel extends React.Component {
                   {item.name}
                 </div>
                 <div className={cx('comments')}>
-                  <span>{this.renderStar(item.ranking)}</span>
+                  <span>{this.renderRankingStar(item.ranking)}</span>
                   <span className={cx('count')}>{item.commentsCount}则评价</span>
                 </div>
               </div>
