@@ -24,9 +24,7 @@
         .slick-prev {
             &:before {
                 content: " ";
-                background-image: url("./preview-arrow.svg");
-                background-repeat: no-repeat;
-                background-position: center center;
+                background: url("./preview-arrow.svg") no-repeat center center;
                 height: 24px;
                 width: 24px;
                 display: inline-block;
@@ -38,9 +36,7 @@
         .slick-next {
             &:before {
                 content: " ";
-                background-image: url("./next-arrow.svg");
-                background-repeat: no-repeat;
-                background-position: center center;
+                background: url("./next-arrow.svg") no-repeat center center;
                 height: 24px;
                 width: 24px;
                 display: inline-block;
@@ -60,19 +56,13 @@
 
     .description {
         color: #484848;
-        margin-top: 8px;
-        font-family: "Hiragino Sans GB", "华文细黑", "STHeiti", "微软雅黑", "Microsoft YaHei", SimHei, "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-weight: 300;
-        color: #484848;
         font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
         margin: 0px;
         word-wrap: break-word;
         font-size: 15px;
         line-height: 18px;
         letter-spacing: 0.2px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        line-height: 18px;
         max-height: 36px;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -96,9 +86,7 @@
     }
 
     .star {
-        background-image: url("./star.svg");
-        background-repeat: no-repeat;
-        background-position: center center;
+        background: url("./star.svg") no-repeat center center;
         height: 12px;
         width: 12px;
         display: inline-block;

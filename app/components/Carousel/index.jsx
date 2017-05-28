@@ -18,6 +18,16 @@ class Carousel extends React.Component {
     };
   }
 
+  componentDidMount() {
+    axios.get(this.props.url)
+      .then((response) => {
+        this.setState({ items: response.data })
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   renderStar = (rankingCount) => {
     let j = 1;
     const stars = [];
@@ -50,16 +60,6 @@ class Carousel extends React.Component {
         }
       </Slider>
     );
-  }
-
-  componentDidMount() {
-    axios.get(this.props.url)
-      .then((response) => {
-        this.setState({ items: response.data })
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   }
 
   render() {

@@ -16,7 +16,7 @@
             display: block;
             text-decoration: none;
             color: #767676;
-            font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+            font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
             word-wrap: break-word;
             font-size: 15px;
             line-height: 18px;
@@ -24,9 +24,8 @@
             padding: 0 16px;
 
             div {
-                border-bottom: 1px solid transparent;
+                border-bottom: 1px solid #F2F2F2;
                 padding: 16px 0;
-                border-color: #F2F2F2;
 
                 &:hover {
                     border-color: #767676;
