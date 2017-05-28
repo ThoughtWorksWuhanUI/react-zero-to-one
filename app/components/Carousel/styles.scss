@@ -59,39 +59,61 @@
     width: 190px;
 
     .description {
-        color: #484848 !important;
+        color: #484848;
         margin-top: 8px;
-        font-family: "Hiragino Sans GB","华文细黑","STHeiti","微软雅黑","Microsoft YaHei",SimHei,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
-        font-weight: 300 !important;
-        color: #484848 !important;
-        font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
-        margin: 0px !important;
-        word-wrap: break-word !important;
-        font-size: 15px !important;
-        line-height: 18px !important;
-        letter-spacing: 0.2px !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        line-height: 18px !important;
-        max-height: 36px !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        display: -webkit-box !important;
-        -webkit-line-clamp: 2 !important;
-        -webkit-box-orient: vertical !important;
+        font-family: "Hiragino Sans GB", "华文细黑", "STHeiti", "微软雅黑", "Microsoft YaHei", SimHei, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 300;
+        color: #484848;
+        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+        margin: 0px;
+        word-wrap: break-word;
+        font-size: 15px;
+        line-height: 18px;
+        letter-spacing: 0.2px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        line-height: 18px;
+        max-height: 36px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
 
         .price {
-            font-weight: 700 !important;
-            color: #484848 !important;
-            font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
-            margin: 0px !important;
-            word-wrap: break-word !important;
-            font-size: 15px !important;
-            line-height: 18px !important;
-            letter-spacing: 0.2px !important;
-            padding-top: 0px !important;
-            padding-bottom: 0px !important;
-            display: inline !important;
+            font-weight: 700;
+            color: #484848;
+            font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+            margin: 0px;
+            word-wrap: break-word;
+            font-size: 15px;
+            line-height: 18px;
+            letter-spacing: 0.2px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            display: inline;
+        }
+    }
+
+    .star {
+        background-image: url("./star.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 12px;
+        width: 12px;
+        display: inline-block;
+        margin-right: 2px;
+    }
+
+    .comments {
+        margin-top: 5px;
+
+        .count {
+            font-weight: normal;
+            color: #484848;
+            font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+            font-size: 12px;
+            letter-spacing: 0.4px;
         }
     }
 }

@@ -9,6 +9,15 @@ import 'slick-carousel/slick/slick-theme.css'
 const cx = classNames.bind(styles);
 
 class Carousel extends React.Component {
+
+  renderStar = (rankingCount) => {
+    let j = 1;
+    const stars = [];
+    for (; j <= rankingCount; j++) {
+      stars.push(<i key={`ranting-${j}`} className={cx('star')} />);
+    }
+    return stars;
+  }
   render() {
     var settings = {
       infinite: false,
@@ -27,7 +36,7 @@ class Carousel extends React.Component {
               <div className={cx('description')}>
                 <span className={cx('price')}>$293HKD</span>Take the slot you're going to remember what you will going through.
               </div>
-              <div>Star</div>
+              <div className={cx('comments')}><span>{this.renderStar(5)}</span><span className={cx('count')}>33则评价</span></div>
             </div>
           </div>
           <div>
