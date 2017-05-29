@@ -3,4 +3,4 @@ import ReactDOM from 'react-dom';
 import TopNav from './components/TopNav';
 import 'normalize.css';
 
-ReactDOM.render(<TopNav/>, document.body);
+ReactDOM.render(<TopNav/>, document.getElementById('app'));
