@@ -1,0 +1,88 @@
+.container {
+  margin: 0 auto !important;
+  position: relative !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  max-width: 1020px !important;
+}
+
+.search-wrapper {
+  border-radius: 4px !important;
+  border: 1px solid #DBDBDB !important;
+  height: 80px;
+  .item {
+    &:not(:last-child) {
+      border-right: 1px solid #DBDBDB !important;
+    }
+    width: 380px;
+    height: 100%;
+    display: table-cell;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    .title {
+      label {
+        margin: 16px 0px 0px 16px;
+        display: block;
+        color: #484848 !important;
+        font-size: 15px !important;
+        letter-spacing: 0.2px !important;
+      }
+    }
+    .content {
+      padding-left: 6px;
+      height: 47px;
+      .content-input {
+        font-size: 19px !important;
+        border: none;
+        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+        padding: 11px !important;
+      }
+      .dropdown-list {
+        line-height: 24px !important;
+        border: 0px !important;
+        border-radius: 4px !important;
+        background: #ffffff !important;
+        color: #767676 !important;
+        width: 100%;
+        height: 100%;
+        text-align: left;
+      }
+      .content-input, .dropdown-list {
+        &:focus {
+          outline: none !important;
+        }
+      }
+    }
+  }
+  .item:nth-child(2) {
+    .content-input:hover {
+      cursor: pointer;
+    }
+  }
+  .item:nth-child(2) {
+    .dropdown-list:hover {
+      cursor: pointer;
+    }
+  }
+  .search-button-wrapper {
+    display: table-cell;
+    width: 0px;
+    .search-button {
+      background: #FF5A5F !important;
+      position: absolute;
+      right: 30px;
+      color: white;
+      font-size: 18px;
+      font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+      width: 94px;
+      height: 48px !important;
+      margin: 12px !important;
+      float: right !important;
+      border: none;
+      padding: 0 18px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+  }
+}
+
+
