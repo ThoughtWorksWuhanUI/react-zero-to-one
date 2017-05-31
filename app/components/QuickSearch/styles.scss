@@ -17,9 +17,9 @@
     width: 380px;
     height: 100%;
     display: table-cell;
-    font-family:Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-    .title{
-      label{
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    .title {
+      label {
         margin: 16px 0px 0px 16px;
         display: block;
         color: #484848 !important;
@@ -27,16 +27,16 @@
         letter-spacing: 0.2px !important;
       }
     }
-    .content{
+    .content {
       padding-left: 6px;
       height: 47px;
-      font-size: 19px !important;
-      input{
+      .content-input {
+        font-size: 19px !important;
         border: none;
-        font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
         padding: 11px !important;
       }
-      button{
+      .dropdown-list {
         line-height: 24px !important;
         border: 0px !important;
         border-radius: 4px !important;
@@ -46,39 +46,39 @@
         height: 100%;
         text-align: left;
       }
-      input,button{
-        &:focus{
+      .content-input, .dropdown-list {
+        &:focus {
           outline: none !important;
         }
       }
     }
   }
-  .item:nth-child(2){
-    input:hover{
+  .item:nth-child(2) {
+    .content-input:hover {
       cursor: pointer;
     }
   }
-  .item:nth-child(2){
-    button:hover{
+  .item:nth-child(2) {
+    .dropdown-list:hover {
       cursor: pointer;
     }
   }
-  .search-button-wrapper{
+  .search-button-wrapper {
     display: table-cell;
-    width:0px;
-    .search-button{
+    width: 0px;
+    .search-button {
       background: #FF5A5F !important;
       position: absolute;
       right: 30px;
       color: white;
       font-size: 18px;
       font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
-      width:94px;
+      width: 94px;
       height: 48px !important;
       margin: 12px !important;
       float: right !important;
-      border:none;
-      padding:0 18px;
+      border: none;
+      padding: 0 18px;
       border-radius: 4px;
       display: inline-block;
     }
