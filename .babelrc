@@ -5,6 +5,11 @@
     "stage-0"
   ],
   "plugins": [
-    "transform-object-assign" ,  ["transform-replace-object-assign", "object.assign"]
+    "transform-object-rest-spread",
+    "transform-object-assign",
+    [
+      "transform-replace-object-assign",
+      "object.assign"
+    ]
   ]
 }
