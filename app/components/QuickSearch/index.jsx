@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.scss';
 import classNames from 'classnames/bind';
+import GuestSelector from '../GuestSelector'
 import {DateRangePicker} from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 
@@ -66,9 +67,7 @@ class QuickSearch extends React.Component {
             <div className={cx('item')}>
               <div className={cx('title')}><label htmlFor="guest">Guest</label></div>
               <div className={cx('content')}>
-                <button className={cx('dropdown-list')}>
-                  <span>1 guest</span>
-                </button>
+                <GuestSelector></GuestSelector>
               </div>
             </div>
             <div className={cx('search-button-wrapper')}>

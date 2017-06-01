@@ -36,16 +36,6 @@
         font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
         padding: 11px !important;
       }
-      .dropdown-list {
-        line-height: 24px !important;
-        border: 0px !important;
-        border-radius: 4px !important;
-        background: #ffffff !important;
-        color: #767676 !important;
-        width: 100%;
-        height: 100%;
-        text-align: left;
-      }
       .content-input, .dropdown-list {
         &:focus {
           outline: none !important;
@@ -58,11 +48,7 @@
       cursor: pointer;
     }
   }
-  .item:nth-child(2) {
-    .dropdown-list:hover {
-      cursor: pointer;
-    }
-  }
+
   .search-button-wrapper {
     display: table-cell;
     width: 0px;
