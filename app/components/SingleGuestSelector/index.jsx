@@ -5,7 +5,24 @@ const cx = classNames.bind(styles);
 class SingleGuestSelector extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      number: props.title == 'Adults' ? 1 : 0
+    };
   }
+
+  subNumber = ()=> {
+    let previousNum = this.state.number;
+    if (previousNum > 0) {
+      this.setState({number: previousNum - 1})
+    }
+  };
+  
+  plusNumber = ()=> {
+    let previousNum = this.state.number;
+    if (previousNum < 16) {
+      this.setState({number: previousNum + 1})
+    }
+  };
 
   render() {
     return <div className={cx('single-guest-selector-wrapper')}>
@@ -16,12 +33,12 @@ class SingleGuestSelector extends React.Component {
           <span>{this.props.reminder}</span></div>
       </div>
       <div className={cx('single-guest-selector-right')}>
-        <button className={cx('sub-button')}>
-          <i className={cx('sub-button-icon')}></i>
+        <button className={cx('sub-button')} type="button">
+          <i className={cx('sub-button-icon')} onClick={this.subNumber}></i>
         </button>
-        <div className={cx('guest-number')}>1</div>
-        <button className={cx('plus-button')}>
-          <i className={cx('plus-button-icon')}></i>
+        <div className={cx('guest-number')}>{this.state.number}</div>
+        <button className={cx('plus-button')} type="button">
+          <i className={cx('plus-button-icon')}  onClick={this.plusNumber}></i>
         </button>
       </div>
     </div>
