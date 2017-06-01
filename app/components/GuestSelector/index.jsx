@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.scss';
 import classNames from 'classnames/bind';
+import SingleGuestSelector from '../SingleGuestSelector'
 const cx = classNames.bind(styles);
 
 class GuestSelector extends React.Component {
