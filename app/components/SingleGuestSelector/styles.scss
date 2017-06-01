@@ -22,7 +22,7 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      border: 1px solid rgba(0, 132, 137, 0.3) !important;
+      border: 1px solid rgba(0, 132, 137, 0.3);
       cursor: pointer !important;
       background-color: transparent;
       i{
@@ -37,6 +37,9 @@
       .plus-button-icon{
         background: url("./plus-button.svg") no-repeat center center;
       }
+    }
+    .active-button{
+      border-color: #008489 !important;
     }
     .sub-button{
       margin-right:18px;

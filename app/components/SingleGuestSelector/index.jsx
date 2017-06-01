@@ -3,25 +3,28 @@ import styles from './styles.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 class SingleGuestSelector extends React.Component {
+  static propTypes = {
+    onChange: React.PropTypes.func
+  };
   constructor(props) {
     super(props);
     this.state = {
-      number: props.title == 'Adults' ? 1 : 0
+      number:props.number
     };
   }
 
   subNumber = ()=> {
     let previousNum = this.state.number;
-    if (previousNum > 0) {
-      this.setState({number: previousNum - 1})
-    }
+    let newNumber = (previousNum > 0) ? previousNum - 1 : previousNum;
+    this.setState({number: newNumber});
+    this.props.onChange(newNumber);
   };
-  
+
   plusNumber = ()=> {
     let previousNum = this.state.number;
-    if (previousNum < 16) {
-      this.setState({number: previousNum + 1})
-    }
+    let newNumber = (previousNum < 16) ? previousNum + 1 : previousNum;
+    this.setState({number: newNumber});
+    this.props.onChange(newNumber);
   };
 
   render() {
@@ -33,11 +36,11 @@ class SingleGuestSelector extends React.Component {
           <span>{this.props.reminder}</span></div>
       </div>
       <div className={cx('single-guest-selector-right')}>
-        <button className={cx('sub-button')} type="button">
+        <button className={cx('sub-button',{'active-button':this.state.number>0})} type="button">
           <i className={cx('sub-button-icon')} onClick={this.subNumber}></i>
         </button>
         <div className={cx('guest-number')}>{this.state.number}</div>
-        <button className={cx('plus-button')} type="button">
+        <button className={cx('plus-button',{'active-button':this.state.number<16})} type="button">
           <i className={cx('plus-button-icon')}  onClick={this.plusNumber}></i>
         </button>
       </div>
