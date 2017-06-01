@@ -2,9 +2,9 @@
   margin: 16px 0px;
   .single-guest-selector-left {
     display: inline-block;
-    width:50%;
+    width: 50%;
     .single-guest-selector-title {
-      font-size: 19px ;
+      font-size: 19px;
       color: #484848;
     }
     .single-guest-selector-reminder {
@@ -18,34 +18,40 @@
     display: inline-block;
     width: 50%;
     button {
+      &:focus {
+        outline: none;
+      }
       display: inline-block;
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      border: 1px solid rgba(0, 132, 137, 0.3);
-      cursor: pointer !important;
+      border: 1px solid #008489;
+      cursor: pointer;
       background-color: transparent;
-      i{
+      i {
         margin-top: 3px;
         width: 20px;
         height: 20px;
         display: inline-block;
       }
-      .sub-button-icon{
+      .sub-button-icon {
         background: url("./sub-button.svg") no-repeat center center;
       }
-      .plus-button-icon{
+      .plus-button-icon {
         background: url("./plus-button.svg") no-repeat center center;
       }
     }
-    .active-button{
-      border-color: #008489 !important;
+    .inactive-button {
+      border-color: rgba(0, 132, 137, 0.3) !important;
+      &:hover {
+        cursor: no-drop;
+      }
     }
-    .sub-button{
-      margin-right:18px;
+    .sub-button {
+      margin-right: 18px;
     }
-    .plus-button{
-      margin-left:18px;
+    .plus-button {
+      margin-left: 18px;
     }
     .guest-number {
       display: inline-block;

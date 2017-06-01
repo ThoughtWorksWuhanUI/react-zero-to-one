@@ -36,11 +36,11 @@ class SingleGuestSelector extends React.Component {
           <span>{this.props.reminder}</span></div>
       </div>
       <div className={cx('single-guest-selector-right')}>
-        <button className={cx('sub-button',{'active-button':this.state.number>0})} type="button">
+        <button className={cx('sub-button',{'inactive-button':this.state.number<=0})} type="button">
           <i className={cx('sub-button-icon')} onClick={this.subNumber}></i>
         </button>
         <div className={cx('guest-number')}>{this.state.number}</div>
-        <button className={cx('plus-button',{'active-button':this.state.number<16})} type="button">
+        <button className={cx('plus-button',{'inactive-button':this.state.number>=16})} type="button">
           <i className={cx('plus-button-icon')}  onClick={this.plusNumber}></i>
         </button>
       </div>

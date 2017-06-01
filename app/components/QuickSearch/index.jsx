@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './styles.scss';
 import classNames from 'classnames/bind';
 import GuestSelector from '../GuestSelector'
 import {DateRangePicker} from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
 
@@ -55,6 +55,8 @@ class QuickSearch extends React.Component {
                        placeholder="Anytime"/>}
                 {this.state.datePickerVisible &&
                 <DateRangePicker
+                  startDatePlaceholderText="Check In"
+                  endDatePlaceholderText="Check Out"
                   startDate={startDate}
                   endDate={endDate}
                   focusedInput={focusedInput}
