@@ -9,29 +9,29 @@ import Autosuggest from 'react-autosuggest';
 
 const cx = classNames.bind(styles);
 
-class PositionSelector extends React.Component{
+class PositionSelector extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      positions:[],
-      suggestions:[],
-      value:'',
-      isEdit:false
+      positions: [],
+      suggestions: [],
+      value: props.value || '',
+      isEdit: false
     };
   }
 
-  onBlur=()=>{
-    this.setState({isEdit:false});
+  onBlur = ()=> {
+    this.setState({isEdit: false});
   };
 
-  onFocus=()=>{
-    this.setState({isEdit:true});
+  onFocus = ()=> {
+    this.setState({isEdit: true});
   };
 
   componentDidMount() {
     axios.get("http://react0to1.getsandbox.com/airbnb/position")
       .then((response) => {
-        this.setState({ positions: response.data })
+        this.setState({positions: response.data})
       })
       .catch(function (error) {
         console.log(error);
@@ -45,7 +45,7 @@ class PositionSelector extends React.Component{
     });
   };
 
-  onSuggestionsFetchRequested = ({ value }) => {
+  onSuggestionsFetchRequested = ({value}) => {
     this.setState({suggestions: this.getSuggestions(value)});
   };
 
@@ -53,19 +53,20 @@ class PositionSelector extends React.Component{
     this.setState({suggestions: []});
   };
 
-  handleChange = (event, { newValue }) => {
+  handleChange = (event, {newValue}) => {
     this.setState({
       value: newValue
     });
+    this.props.onChange(newValue);
   };
 
-  render(){
-    const { value, suggestions } = this.state;
+  render() {
+    const {value, suggestions} = this.state;
     const inputProps = {
       placeholder: 'Destination, city, address',
       value,
       onChange: this.handleChange,
-      onBlur:this.onBlur
+      onBlur: this.onBlur
     };
 
     function getSuggestionValue(suggestion) {
@@ -77,10 +78,12 @@ class PositionSelector extends React.Component{
         <span>{suggestion.position} {suggestion.province} {suggestion.city}</span>
       );
     }
+
     return (
       <div className={cx('container')}>
         {!this.state.isEdit &&
-        <input className={cx('input-box')} value={this.state.value} placeholder='AnyWhere' onChange={this.handleChange} onFocus={this.onFocus} type="text"/>}
+        <input className={cx('input-box')} value={this.state.value} placeholder='AnyWhere' onChange={this.handleChange}
+               onFocus={this.onFocus} type="text"/>}
         {this.state.isEdit &&
         <Autosuggest
           theme={theme}

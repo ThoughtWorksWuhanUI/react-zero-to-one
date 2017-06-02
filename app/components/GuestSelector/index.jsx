@@ -9,7 +9,7 @@ class GuestSelector extends React.Component {
     super(props);
     this.state = {
       openDropdownList: props.openDropdownList,
-      guest: {adults: 1, children: 0, infants: 0}
+      guest: props.value || {adults: 1, children: 0, infants: 0}
     };
   }
 
@@ -25,6 +25,7 @@ class GuestSelector extends React.Component {
     let data = this.state.guest;
     data[key] = value;
     this.setState({guest: data});
+    this.props.onChange(data);
   };
 
   render() {

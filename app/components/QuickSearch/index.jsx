@@ -8,14 +8,23 @@ import styles from './styles.scss';
 const cx = classNames.bind(styles);
 
 class QuickSearch extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      when:{startDate:null,endDate:null}
+      when: {startDate: null, endDate: null},
+      where: null,
+      guest: {adults: 1, children: 0, infants: 0}
     };
   }
+
+  updateState = (key, value)=> {
+    let data = this.state;
+    data[key] = value;
+    this.setState(data);
+  };
+
   render() {
+    const {when, where, guest}=this.state;
     return (
       <div className={styles.container}>
         <form>
@@ -23,19 +32,20 @@ class QuickSearch extends React.Component {
             <div className={cx('item')}>
               <div className={cx('title')}><label htmlFor="where">Where</label></div>
               <div className={cx('content')}>
-                <PositionSelector></PositionSelector>
+                <PositionSelector value={where} onChange={(value)=>this.updateState('where',value)}></PositionSelector>
               </div>
             </div>
             <div className={cx('item')}>
               <div className={cx('title')}><label htmlFor="When">When</label></div>
               <div className={cx('content')}>
-                <AirBnbDateRangePicker initialStartDate={this.state.when.startDate} initialEndDate={this.state.when.endDate}></AirBnbDateRangePicker>
+                <AirBnbDateRangePicker value={when}
+                                       onChange={(value)=>this.updateState('when',value)}></AirBnbDateRangePicker>
               </div>
             </div>
             <div className={cx('item')}>
               <div className={cx('title')}><label htmlFor="guest">Guest</label></div>
               <div className={cx('content')}>
-                <GuestSelector></GuestSelector>
+                <GuestSelector value={guest} onChange={(value)=>this.updateState('guest',value)}></GuestSelector>
               </div>
             </div>
             <div className={cx('search-button-wrapper')}>
