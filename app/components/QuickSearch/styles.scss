@@ -70,5 +70,13 @@
     }
   }
 }
+:global {
+  .DateRangePicker {
+    :first-child div{
+      border: none !important;
+    }
+  }
+}
+
 
 

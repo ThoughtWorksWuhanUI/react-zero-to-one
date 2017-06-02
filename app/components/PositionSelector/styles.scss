@@ -3,6 +3,8 @@
   .input-box {
     font-size: 19px;
     border: none;
+    width: 100%;
+    box-sizing: border-box;
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
     padding: 11px 11px 11px 14px;
     &:focus {
