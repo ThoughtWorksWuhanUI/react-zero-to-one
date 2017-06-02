@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import GuestSelector from '../GuestSelector'
+import PositionSelector from '../PositionSelector'
 import {DateRangePicker} from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import styles from './styles.scss';
@@ -44,7 +45,7 @@ class QuickSearch extends React.Component {
             <div className={cx('item')}>
               <div className={cx('title')}><label htmlFor="where">Where</label></div>
               <div className={cx('content')}>
-                <input className={cx('content-input')} type="text" placeholder="Anywhere"/>
+                <PositionSelector className={cx('content-input')}></PositionSelector>
               </div>
             </div>
             <div className={cx('item')}>

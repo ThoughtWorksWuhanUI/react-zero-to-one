@@ -1,0 +1,9 @@
+.input-box {
+  font-size: 19px !important;
+  border: none;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+  padding: 11px !important;
+  &:focus {
+    outline: none !important;
+  }
+}
