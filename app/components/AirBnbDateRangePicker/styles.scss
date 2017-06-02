@@ -1,0 +1,19 @@
+.input-box {
+  font-size: 19px;
+  border: none;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  padding: 11px 11px 11px 14px;
+  &:hover {
+    cursor: pointer;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+:global {
+  .DateRangePicker {
+    :first-child div{
+      border: none !important;
+    }
+  }
+}

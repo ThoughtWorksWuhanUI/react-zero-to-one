@@ -11,44 +11,25 @@
   border: 1px solid #DBDBDB;
   height: 80px;
   .item {
-    &:not(:last-child) {
-      border-right: 1px solid #DBDBDB;
-    }
     width: 380px;
     height: 100%;
     display: table-cell;
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-    .title {
-      label {
-        margin: 16px 0px 0px 16px;
-        display: block;
-        color: #484848;
-        font-size: 15px;
-        letter-spacing: 0.2px;
-      }
+    .title label {
+      margin: 16px 0px 0px 16px;
+      display: block;
+      color: #484848;
+      font-size: 15px;
+      letter-spacing: 0.2px;
     }
     .content {
       height: 50px;
       margin-top: -3px;
-      .content-input {
-        font-size: 19px;
-        border: none;
-        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-        padding: 11px 11px 11px 14px;
-      }
-      .content-input, .dropdown-list {
-        &:focus {
-          outline: none;
-        }
-      }
+    }
+    &:not(:last-child) {
+      border-right: 1px solid #DBDBDB;
     }
   }
-  .item:nth-child(2) {
-    .content-input:hover {
-      cursor: pointer;
-    }
-  }
-
   .search-button-wrapper {
     display: table-cell;
     width: 0px;
@@ -70,13 +51,3 @@
     }
   }
 }
-:global {
-  .DateRangePicker {
-    :first-child div{
-      border: none !important;
-    }
-  }
-}
-
-
-
