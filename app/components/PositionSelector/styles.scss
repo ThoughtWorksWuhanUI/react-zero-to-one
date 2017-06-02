@@ -1,9 +1,12 @@
-.input-box {
-  font-size: 19px !important;
-  border: none;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
-  padding: 11px !important;
-  &:focus {
-    outline: none !important;
+.container {
+  position: relative;
+  .input-box {
+    font-size: 19px;
+    border: none;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    padding: 11px 11px 11px 14px;
+    &:focus {
+      outline: none;
+    }
   }
 }

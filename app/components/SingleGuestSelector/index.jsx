@@ -3,9 +3,6 @@ import styles from './styles.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 class SingleGuestSelector extends React.Component {
-  static propTypes = {
-    onChange: React.PropTypes.func
-  };
   constructor(props) {
     super(props);
     this.state = {

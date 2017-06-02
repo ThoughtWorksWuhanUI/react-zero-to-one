@@ -1,18 +1,18 @@
 .container {
-  margin: 0 auto !important;
-  position: relative !important;
-  padding-left: 24px !important;
-  padding-right: 24px !important;
-  max-width: 1020px !important;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 24px;
+  padding-right: 24px;
+  max-width: 1020px;
 }
 
 .search-wrapper {
-  border-radius: 4px !important;
-  border: 1px solid #DBDBDB !important;
+  border-radius: 4px;
+  border: 1px solid #DBDBDB;
   height: 80px;
   .item {
     &:not(:last-child) {
-      border-right: 1px solid #DBDBDB !important;
+      border-right: 1px solid #DBDBDB;
     }
     width: 380px;
     height: 100%;
@@ -22,24 +22,23 @@
       label {
         margin: 16px 0px 0px 16px;
         display: block;
-        color: #484848 !important;
-        font-size: 15px !important;
-        letter-spacing: 0.2px !important;
+        color: #484848;
+        font-size: 15px;
+        letter-spacing: 0.2px;
       }
     }
     .content {
-      padding-left: 6px;
       height: 50px;
       margin-top: -3px;
       .content-input {
-        font-size: 19px !important;
+        font-size: 19px;
         border: none;
-        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
-        padding: 11px !important;
+        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+        padding: 11px 11px 11px 14px;
       }
       .content-input, .dropdown-list {
         &:focus {
-          outline: none !important;
+          outline: none;
         }
       }
     }
@@ -54,16 +53,16 @@
     display: table-cell;
     width: 0px;
     .search-button {
-      background: #FF5A5F !important;
+      background: #FF5A5F;
       position: absolute;
       right: 30px;
       color: white;
       font-size: 18px;
       font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
       width: 94px;
-      height: 48px !important;
-      margin: 12px !important;
-      float: right !important;
+      height: 48px;
+      margin: 12px;
+      float: right;
       border: none;
       padding: 0 18px;
       border-radius: 4px;

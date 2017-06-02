@@ -1,0 +1,43 @@
+.container {
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 19px;
+  border: none;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  padding: 11px 11px 11px 14px;
+  &:focus {
+    outline: none;
+  }
+}
+
+.suggestionsContainer {
+  position: absolute;
+  margin-left: 0px;
+  width: 100%;
+  z-index: 1;
+  padding-left: 0px;
+  background-color: white;
+  border: 1px solid #DBDBDB;
+  border-top-color: #008489;
+  border-top-wicth: 2px;
+  border-radius: 2px;
+  .suggestionsList {
+    margin-left: 0px;
+    padding-left: 0px;
+    .suggestion {
+      list-style: none;
+      height: 40px;
+      margin: 10px 0;
+    }
+    .suggestionHighlighted {
+      &:hover {
+        background-color: #CCEEEB;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
