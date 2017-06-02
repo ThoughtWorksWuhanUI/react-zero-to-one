@@ -40,8 +40,8 @@ class PositionSelector extends React.Component{
 
   getSuggestions = (inputValue)=> {
     return this.state.positions.filter(function (e) {
-      var searchString = inputValue.toLowerCase;
-      return e.position.toLowerCase.indexOf(searchString) >= 0 || e.city.indexOf(searchString) >= 0;
+      var searchString = inputValue.toLowerCase().trim();
+      return (`${e.position}+${e.province}+${e.city}`).toLowerCase().includes(searchString);
     });
   };
 
@@ -74,7 +74,7 @@ class PositionSelector extends React.Component{
 
     function renderSuggestion(suggestion) {
       return (
-        <span>{suggestion.position}{suggestion.province}{suggestion.city}</span>
+        <span>{suggestion.position} {suggestion.province} {suggestion.city}</span>
       );
     }
     return (
