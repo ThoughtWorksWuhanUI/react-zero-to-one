@@ -13,7 +13,11 @@ const config = {
   },
   module: {
     rules: [
-      { test: /\.(js|jsx)$/, use: 'babel-loader' },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: 'babel-loader'
+      },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
