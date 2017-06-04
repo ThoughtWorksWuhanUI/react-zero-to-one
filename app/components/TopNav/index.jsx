@@ -1,7 +1,8 @@
-import React from 'react';
+  import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './styles.scss';
 import PopupMenu from './PopupMenu';
+import LoginForm from '../LoginForm'
 
 const cx = classNames.bind(styles);
 
@@ -9,13 +10,25 @@ class TopNav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showLandlordMenu: false
+      showLandlordMenu: false,
+      showLoginForm: false
     };
   }
 
   toggleShowLandlordMenu = (toggleOff = false) => {
     this.setState({
       showLandlordMenu: !toggleOff && !this.state.showLandlordMenu
+    });
+  }
+
+  handleShowLoginForm = () => {
+    this.setState({
+      showLoginForm: true
+    });
+  }
+  handleHideLoginForm = () => {
+    this.setState({
+      showLoginForm: false
     });
   }
 
@@ -35,7 +48,10 @@ class TopNav extends React.Component {
               </li>
               <li><button>帮助</button></li>
               <li><button>注册</button></li>
-              <li><button>登录</button></li>
+              <li><button onClick={ this.handleShowLoginForm }>登录</button></li>
+              {
+                this.state.showLoginForm && <LoginForm handleClose={this.handleHideLoginForm}/>
+              }
             </ul>
           </nav>
         </div>
