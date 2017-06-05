@@ -1,5 +1,5 @@
 .single-guest-selector-wrapper {
-  margin: 16px 0px;
+  margin: 24px 0px;
   .single-guest-selector-left {
     display: inline-block;
     width: 50%;
@@ -10,6 +10,7 @@
     .single-guest-selector-reminder {
       font-weight: 300;
       color: #484848;
+      line-height: 18px;
       font-size: 15px;
     }
   }

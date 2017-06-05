@@ -53,6 +53,10 @@ class PositionSelector extends React.Component {
     this.setState({suggestions: []});
   };
 
+  onSuggestionSelected = ()=> {
+    this.props.submit();
+  };
+  
   handleChange = (event, {newValue}) => {
     this.setState({
       value: newValue
@@ -90,6 +94,7 @@ class PositionSelector extends React.Component {
           suggestions={suggestions}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          onSuggestionSelected={this.onSuggestionSelected}
           getSuggestionValue={getSuggestionValue}
           renderSuggestion={renderSuggestion}
           inputProps={inputProps}
