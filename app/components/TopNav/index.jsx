@@ -27,12 +27,10 @@ class TopNav extends React.Component {
   }
 
   hideLoginFormWhenLoginSuccessfully = (props) => {
-    if(this.state.showLoginForm) {
-      if(!props.user.errorMessage) {
+    if(this.state.showLoginForm && !props.user.errorMessage) {
         this.setState({
           showLoginForm: false
         })
-      }
     }
   }
 
