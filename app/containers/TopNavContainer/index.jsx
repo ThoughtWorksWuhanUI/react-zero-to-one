@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import TopNav from '../../components/TopNav';
-import {Login, Logout} from '../../redux/actions';
+import {Login, Logout, Reset} from '../../redux/actions';
 
 const mapStateToProps = (state) => ({
     user: state
@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleLogout: () => {
     dispatch(Logout())
+  },
+  resetLoginForm: () => {
+    dispatch(Reset())
   }
 });
 const TopNavContainer = connect(mapStateToProps, mapDispatchToProps)(TopNav);

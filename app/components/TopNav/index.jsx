@@ -10,7 +10,8 @@ class TopNav extends React.Component {
   static propTypes = {
     user: React.PropTypes.object,
     handleLogin: React.PropTypes.func,
-    handleLogout: React.PropTypes.func
+    handleLogout: React.PropTypes.func,
+    resetLoginForm: React.PropTypes.func
   }
 
   constructor(props) {
@@ -19,6 +20,20 @@ class TopNav extends React.Component {
       showLandlordMenu: false,
       showLoginForm: false
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.hideLoginFormWhenLoginSuccessfully(nextProps)
+  }
+
+  hideLoginFormWhenLoginSuccessfully = (props) => {
+    if(this.state.showLoginForm) {
+      if(!props.user.errorMessage) {
+        this.setState({
+          showLoginForm: false
+        })
+      }
+    }
   }
 
   toggleShowLandlordMenu = (toggleOff = false) => {
@@ -36,7 +51,9 @@ class TopNav extends React.Component {
     this.setState({
       showLoginForm: false
     });
+    this.props.resetLoginForm && this.props.resetLoginForm();
   }
+
 
   render() {
     return (
@@ -58,7 +75,7 @@ class TopNav extends React.Component {
                  <li><button>注册</button></li>
                  <li><button onClick={ this.handleShowLoginForm }>登录</button></li>
                  {
-                   this.state.showLoginForm && <LoginForm handleClose={this.handleHideLoginForm} handleLogin={ this.props.handleLogin }/>
+                   this.state.showLoginForm && <LoginForm user={this.props.user} handleClose={this.handleHideLoginForm} handleLogin={ this.props.handleLogin }/>
                  }
                </div>
 
@@ -67,7 +84,7 @@ class TopNav extends React.Component {
                 this.props.user.isLoggedIn &&
                 <div className={cx('user-section')}>
                   <li>
-                    <button>lingwei</button>
+                    <button>{ this.props.user.name }</button>
                   </li>
                   <li>
                     <button onClick={ this.props.handleLogout }>
