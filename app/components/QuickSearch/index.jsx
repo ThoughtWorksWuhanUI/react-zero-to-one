@@ -49,7 +49,7 @@ class QuickSearch extends React.Component {
               </div>
             </div>
             <div className={cx('item')}>
-              <div className={cx('title')}><label htmlFor="guest">Guest</label></div>
+              <div className={cx('title')}><label htmlFor="guest">Guests</label></div>
               <div className={cx('content')}>
                 <GuestSelector value={guest} submit={this.submitForm}
                                onChange={(value)=>this.updateState('guest',value)}></GuestSelector>
