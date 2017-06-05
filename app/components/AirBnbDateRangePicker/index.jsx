@@ -28,6 +28,9 @@ class AirBnbDateRangePicker extends React.Component {
       this.setState({datePickerVisible: false})
     }
     this.props.onChange({startDate: date.startDate, endDate: date.endDate});
+    if (date.startDate && date.endDate) {
+      this.props.submit();
+    }
   };
   
   showDatePicker = ()=> {

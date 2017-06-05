@@ -28,6 +28,11 @@ class GuestSelector extends React.Component {
     this.props.onChange(data);
   };
 
+  onMouseLeave = ()=> {
+    this.setState({openDropdownList: false});
+    this.props.submit();
+  };
+
   render() {
     const {openDropdownList, guest} = this.state;
     return <div className={cx('dropdown-list')}>
@@ -36,7 +41,7 @@ class GuestSelector extends React.Component {
         <i className={cx('down-select-icon',{'has-click':openDropdownList})}></i>
       </div>
       {openDropdownList &&
-      <div className={cx('guest-selector')}>
+      <div className={cx('guest-selector')} onMouseLeave={this.onMouseLeave}>
         <SingleGuestSelector title="Adults" number={guest.adults}
                              onChange={(value)=>this.setGuestNumber('adults',value)}></SingleGuestSelector>
         <SingleGuestSelector title="Children" reminder="Ages 2 - 12" number={guest.children}
