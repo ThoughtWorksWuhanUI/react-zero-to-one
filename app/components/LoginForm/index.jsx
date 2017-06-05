@@ -6,10 +6,15 @@ const cx = classNames.bind(styles);
 
 class LoginForm extends React.Component {
   static propTypes = {
-    handleClose: React.PropTypes.func
+    handleClose: React.PropTypes.func,
+    handleLogin: React.PropTypes.func
   }
   constructor(props) {
     super(props);
+    this.state = {
+      email: null,
+      password: null
+    }
   }
 
   render() {
@@ -18,9 +23,9 @@ class LoginForm extends React.Component {
         <div className={cx('dialog')}>
           <div className={cx('content')}>
             <div className={cx('form')}>
-              <input type="text" placeholder="电子邮件"/>
-              <input type="password" placeholder="密码"/>
-              <button>登录</button>
+              <input type="text" placeholder="电子邮件" onChange={this.handleOnChange('email')}/>
+              <input type="password" placeholder="密码" onChange={this.handleOnChange('password')}/>
+              <button onClick={this.handleLogin}>登录</button>
             </div>
             <span className={ cx('close') } onClick={this.props.handleClose}>
             </span>
@@ -28,6 +33,19 @@ class LoginForm extends React.Component {
         </div>
       </div>
     );
+  }
+
+  handleLogin = () => {
+    this.props.handleLogin && this.props.handleLogin(this.state);
+    this.props.handleClose && this.props.handleClose();
+  }
+
+  handleOnChange = (field) => {
+    return (event, newVal) => {
+      this.setState({
+        [field]: newVal
+      });
+    }
   }
 }
 

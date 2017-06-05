@@ -7,6 +7,12 @@ import LoginForm from '../LoginForm'
 const cx = classNames.bind(styles);
 
 class TopNav extends React.Component {
+  static propTypes = {
+    user: React.PropTypes.object,
+    handleLogin: React.PropTypes.func,
+    handleLogout: React.PropTypes.func
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -47,11 +53,31 @@ class TopNav extends React.Component {
                 />
               </li>
               <li><button>帮助</button></li>
-              <li><button>注册</button></li>
-              <li><button onClick={ this.handleShowLoginForm }>登录</button></li>
               {
-                this.state.showLoginForm && <LoginForm handleClose={this.handleHideLoginForm}/>
+               !this.props.user.isLoggedIn && <div className={cx('login-register')}>
+                 <li><button>注册</button></li>
+                 <li><button onClick={ this.handleShowLoginForm }>登录</button></li>
+                 {
+                   this.state.showLoginForm && <LoginForm handleClose={this.handleHideLoginForm} handleLogin={ this.props.handleLogin }/>
+                 }
+               </div>
+
               }
+              {
+                this.props.user.isLoggedIn &&
+                <div className={cx('user-section')}>
+                  <li>
+                    <button>lingwei</button>
+                  </li>
+                  <li>
+                    <button onClick={ this.props.handleLogout }>
+                      登出
+                    </button>
+                  </li>
+                </div>
+
+              }
+
             </ul>
           </nav>
         </div>
