@@ -5,11 +5,6 @@ import styles from './styles.scss';
 const cx = classNames.bind(styles);
 
 class LoginForm extends React.Component {
-  static propTypes = {
-    handleClose: React.PropTypes.func,
-    handleLogin: React.PropTypes.func,
-    user: React.PropTypes.object
-  }
   constructor(props) {
     super(props);
     this.state = {
@@ -55,6 +50,12 @@ class LoginForm extends React.Component {
       });
     }
   }
+}
+
+LoginForm.propTypes = {
+  handleClose: React.PropTypes.func,
+  handleLogin: React.PropTypes.func,
+  user: React.PropTypes.object
 }
 
 export default LoginForm;

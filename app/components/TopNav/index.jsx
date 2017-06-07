@@ -7,12 +7,6 @@ import LoginForm from '../LoginForm'
 const cx = classNames.bind(styles);
 
 class TopNav extends React.Component {
-  static propTypes = {
-    user: React.PropTypes.object,
-    handleLogin: React.PropTypes.func,
-    handleLogout: React.PropTypes.func,
-    resetLoginForm: React.PropTypes.func
-  }
 
   constructor(props) {
     super(props);
@@ -69,7 +63,8 @@ class TopNav extends React.Component {
               </li>
               <li><button>帮助</button></li>
               {
-               !this.props.user.isLoggedIn && <div className={cx('login-register')}>
+               !this.props.user.isLoggedIn &&
+               <div className={cx('login-register')}>
                  <li><button>注册</button></li>
                  <li><button onClick={ this.handleShowLoginForm }>登录</button></li>
                  {
@@ -90,7 +85,6 @@ class TopNav extends React.Component {
                     </button>
                   </li>
                 </div>
-
               }
 
             </ul>
@@ -99,6 +93,13 @@ class TopNav extends React.Component {
       </div>
     );
   }
+}
+
+TopNav.propTypes = {
+  user: React.PropTypes.object,
+  handleLogin: React.PropTypes.func,
+  handleLogout: React.PropTypes.func,
+  resetLoginForm: React.PropTypes.func
 }
 
 export default TopNav;

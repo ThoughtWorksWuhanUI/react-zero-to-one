@@ -32,11 +32,11 @@ export const Logout = () => ({
 export const Login = (user) => {
   return (dispatch) => {
     axios.get(getUsersListUrl).then((response) => {
-      let login_User = response.data.find((u) => {
+      let loginUser = response.data.find((u) => {
         return u.email === user.email && u.password === user.password;
       });
-      if(login_User) {
-        dispatch(LoginSuccess(login_User))
+      if(loginUser) {
+        dispatch(LoginSuccess(loginUser))
       } else {
         dispatch(LoginFailed())
       }
