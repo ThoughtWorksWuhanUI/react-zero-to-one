@@ -7,6 +7,22 @@ import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
 
+class SearchSingleSection extends React.Component{
+  constructor(props) {
+    super(props);
+  }
+  render(){
+    return (
+      <div className={cx('item')}>
+        <div className={cx('title')}><label htmlFor="where">{this.props.title}</label></div>
+        <div className={cx('content')}>
+          {this.props.children}
+        </div>
+      </div>
+    );
+  }
+};
+
 class QuickSearch extends React.Component {
   constructor(props) {
     super(props);
@@ -28,27 +44,15 @@ class QuickSearch extends React.Component {
       <div className={styles.container}>
         <form onSubmit={this.submitForm} ref="form">
           <div className={cx('search-wrapper')}>
-            <div className={cx('item')}>
-              <div className={cx('title')}><label htmlFor="where">地点</label></div>
-              <div className={cx('content')}>
-                <PositionSelector value={where} submit={this.submitForm}
-                                  onChange={(value)=>this.setState({where:value})}></PositionSelector>
-              </div>
-            </div>
-            <div className={cx('item')}>
-              <div className={cx('title')}><label htmlFor="When">时间</label></div>
-              <div className={cx('content')}>
-                <AirBnbDateRangePicker value={when} submit={this.submitForm}
-                                       onChange={(value)=>this.setState({when:value})}></AirBnbDateRangePicker>
-              </div>
-            </div>
-            <div className={cx('item')}>
-              <div className={cx('title')}><label htmlFor="guest">房客</label></div>
-              <div className={cx('content')}>
-                <GuestSelector value={guest} submit={this.submitForm}
-                               onChange={(value)=>this.setState({guest:value})}></GuestSelector>
-              </div>
-            </div>
+            <SearchSingleSection title="地点">
+              <PositionSelector value={where} submit={this.submitForm} onChange={(value)=>this.setState({where:value})}></PositionSelector>
+            </SearchSingleSection>
+            <SearchSingleSection title="时间">
+              <AirBnbDateRangePicker value={when} submit={this.submitForm} onChange={(value)=>this.setState({when:value})}></AirBnbDateRangePicker>
+            </SearchSingleSection>
+            <SearchSingleSection title="房客">
+              <GuestSelector value={guest} submit={this.submitForm} onChange={(value)=>this.setState({guest:value})}></GuestSelector>
+            </SearchSingleSection>
             <div className={cx('search-button-wrapper')}>
               <button className={cx('search-button')}>
                 <span>搜索</span>
