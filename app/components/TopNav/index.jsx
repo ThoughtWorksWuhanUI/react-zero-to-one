@@ -34,16 +34,40 @@ class TopNav extends React.Component {
     });
   }
 
-  handleShowLoginForm = () => {
+  toggleLoginForm = () => {
     this.setState({
-      showLoginForm: true
-    });
+      showLoginForm: !this.state.showLoginForm
+    })
+    if(this.state.showLoginForm) {
+      this.props.resetLoginForm && this.props.resetLoginForm();
+    }
   }
-  handleHideLoginForm = () => {
-    this.setState({
-      showLoginForm: false
-    });
-    this.props.resetLoginForm && this.props.resetLoginForm();
+
+  loginSection = () => {
+    return (
+      <div className={cx('login-register')}>
+        <li><button>注册</button></li>
+        <li><button onClick={ this.toggleLoginForm }>登录</button></li>
+        {
+          this.state.showLoginForm && <LoginForm user={this.props.user} handleClose={this.toggleLoginForm} handleLogin={ this.props.handleLogin }/>
+        }
+      </div>
+    )
+  }
+
+  logoutSection = () => {
+    return (
+      <div className={cx('user-section')}>
+        <li>
+          <button>{ this.props.user.name }</button>
+        </li>
+        <li>
+          <button onClick={ this.props.handleLogout }>
+            登出
+          </button>
+        </li>
+      </div>
+    )
   }
 
 
@@ -62,31 +86,7 @@ class TopNav extends React.Component {
                 />
               </li>
               <li><button>帮助</button></li>
-              {
-               !this.props.user.isLoggedIn &&
-               <div className={cx('login-register')}>
-                 <li><button>注册</button></li>
-                 <li><button onClick={ this.handleShowLoginForm }>登录</button></li>
-                 {
-                   this.state.showLoginForm && <LoginForm user={this.props.user} handleClose={this.handleHideLoginForm} handleLogin={ this.props.handleLogin }/>
-                 }
-               </div>
-
-              }
-              {
-                this.props.user.isLoggedIn &&
-                <div className={cx('user-section')}>
-                  <li>
-                    <button>{ this.props.user.name }</button>
-                  </li>
-                  <li>
-                    <button onClick={ this.props.handleLogout }>
-                      登出
-                    </button>
-                  </li>
-                </div>
-              }
-
+              { this.props.user.isLoggedIn ? this.logoutSection() : this.loginSection() }
             </ul>
           </nav>
         </div>
