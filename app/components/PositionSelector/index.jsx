@@ -67,7 +67,7 @@ class PositionSelector extends React.Component {
   render() {
     const {value, suggestions} = this.state;
     const inputProps = {
-      placeholder: 'Destination, city, address',
+      placeholder: '目的地,城市,地址',
       value,
       onChange: this.handleChange,
       onBlur: this.onBlur
@@ -86,7 +86,7 @@ class PositionSelector extends React.Component {
     return (
       <div className={cx('container')}>
         {!this.state.isEdit &&
-        <input className={cx('input-box')} value={this.state.value} placeholder='AnyWhere' onChange={this.handleChange}
+        <input className={cx('input-box')} value={this.state.value} placeholder='目的地,城市,地址' onChange={this.handleChange}
                onFocus={this.onFocus} type="text"/>}
         {this.state.isEdit &&
         <Autosuggest

@@ -51,25 +51,25 @@ class GuestSelector extends React.Component {
   render() {
     const {openDropdownList, guest} = this.state;
     return <div className={cx('dropdown-list')}>
-      <span className={cx('guest-total-number')}>{this.getTotalGuest()} guest</span>
+      <span className={cx('guest-total-number')}>{this.getTotalGuest()} 位房客</span>
       <div className={cx('select-wrapper')} onClick={this.clickSelect}>
         <i className={cx('down-select-icon',{'has-click':openDropdownList})}></i>
       </div>
       {openDropdownList &&
       <div className={cx('guest-selector')} onMouseLeave={this.submitChange}>
-        <SingleGuestSelector title="Adults" number={guest.adults}
+        <SingleGuestSelector title="成人" number={guest.adults}
                              onChange={(value)=>this.setGuestNumber('adults',value)}></SingleGuestSelector>
-        <SingleGuestSelector title="Children" reminder="Ages 2 - 12" number={guest.children}
+        <SingleGuestSelector title="儿童" reminder="2 - 12岁" number={guest.children}
                              onChange={(value)=>this.setGuestNumber('children',value)}></SingleGuestSelector>
-        <SingleGuestSelector title="Infants" reminder="Under 2" number={guest.infants}
+        <SingleGuestSelector title="婴幼儿" reminder="2岁以下" number={guest.infants}
                              onChange={(value)=>this.setGuestNumber('infants',value)}></SingleGuestSelector>
 
         <div className={cx('selector-bottom')}>
           <div className={cx('selector-bottom-left')}>
-            <button onClick={this.cancelSelect}><span>Cancel</span></button>
+            <button onClick={this.cancelSelect}><span>取消</span></button>
           </div>
           <div className={cx('selector-bottom-right')}>
-            <button onClick={this.applySelect}><span>Apply</span></button>
+            <button onClick={this.applySelect}><span>确认</span></button>
           </div>
         </div>
       </div>

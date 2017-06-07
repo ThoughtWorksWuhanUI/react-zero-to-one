@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './styles.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
+const MAX_GUESTS_NUMBER = 16;
 class SingleGuestSelector extends React.Component {
   constructor(props) {
     super(props);
@@ -11,18 +12,23 @@ class SingleGuestSelector extends React.Component {
   }
 
   subNumber = ()=> {
-    let previousNum = this.state.number;
-    let newNumber = (previousNum > 0) ? previousNum - 1 : previousNum;
-    this.setState({number: newNumber});
-    this.props.onChange(newNumber);
+    this.updateNumber(function(previousNum){
+      return (previousNum > 0) ? previousNum - 1 : previousNum;
+    })
   };
 
   plusNumber = ()=> {
-    let previousNum = this.state.number;
-    let newNumber = (previousNum < 16) ? previousNum + 1 : previousNum;
+    this.updateNumber(function(previousNum){
+        return (previousNum < MAX_GUESTS_NUMBER) ? previousNum + 1 : previousNum
+    })
+  };
+
+  updateNumber = (newNumberGenerator)=> {
+    let newNumber = newNumberGenerator(this.state.number);
     this.setState({number: newNumber});
     this.props.onChange(newNumber);
   };
+  
 
   render() {
     return <div className={cx('single-guest-selector-wrapper')}>

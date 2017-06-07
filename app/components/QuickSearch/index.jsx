@@ -17,12 +17,6 @@ class QuickSearch extends React.Component {
     };
   }
 
-  updateState = (key, value)=> {
-    let data = this.state;
-    data[key] = value;
-    this.setState(data);
-  };
-
   submitForm = (e)=> {
     e && e.preventDefault();
     console.log("submit", this.state);
@@ -35,29 +29,29 @@ class QuickSearch extends React.Component {
         <form onSubmit={this.submitForm} ref="form">
           <div className={cx('search-wrapper')}>
             <div className={cx('item')}>
-              <div className={cx('title')}><label htmlFor="where">Where</label></div>
+              <div className={cx('title')}><label htmlFor="where">地点</label></div>
               <div className={cx('content')}>
                 <PositionSelector value={where} submit={this.submitForm}
-                                  onChange={(value)=>this.updateState('where',value)}></PositionSelector>
+                                  onChange={(value)=>this.setState({where:value})}></PositionSelector>
               </div>
             </div>
             <div className={cx('item')}>
-              <div className={cx('title')}><label htmlFor="When">When</label></div>
+              <div className={cx('title')}><label htmlFor="When">时间</label></div>
               <div className={cx('content')}>
                 <AirBnbDateRangePicker value={when} submit={this.submitForm}
-                                       onChange={(value)=>this.updateState('when',value)}></AirBnbDateRangePicker>
+                                       onChange={(value)=>this.setState({when:value})}></AirBnbDateRangePicker>
               </div>
             </div>
             <div className={cx('item')}>
-              <div className={cx('title')}><label htmlFor="guest">Guests</label></div>
+              <div className={cx('title')}><label htmlFor="guest">房客</label></div>
               <div className={cx('content')}>
                 <GuestSelector value={guest} submit={this.submitForm}
-                               onChange={(value)=>this.updateState('guest',value)}></GuestSelector>
+                               onChange={(value)=>this.setState({guest:value})}></GuestSelector>
               </div>
             </div>
             <div className={cx('search-button-wrapper')}>
               <button className={cx('search-button')}>
-                <span>Search</span>
+                <span>搜索</span>
               </button>
             </div>
           </div>
