@@ -14,7 +14,7 @@ class SearchSingleSection extends React.Component{
   render(){
     return (
       <div className={cx('item')}>
-        <div className={cx('title')}><label htmlFor="where">{this.props.title}</label></div>
+        <div className={cx('title')}><label>{this.props.title}</label></div>
         <div className={cx('content')}>
           {this.props.children}
         </div>
