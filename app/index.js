@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HomePage from './containers/HomePage';
+import App from './containers/App';
 import 'normalize.css';
 
-ReactDOM.render(<HomePage/>, document.getElementById('app'));
+ReactDOM.render(<App/>, document.getElementById('app'));
