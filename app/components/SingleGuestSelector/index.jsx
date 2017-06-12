@@ -7,28 +7,28 @@ class SingleGuestSelector extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      number:props.number
+      number: props.number
     };
   }
 
-  subNumber = ()=> {
-    this.updateNumber(function(previousNum){
+  subNumber = () => {
+    this.updateNumber(function (previousNum) {
       return (previousNum > 0) ? previousNum - 1 : previousNum;
     })
   };
 
-  plusNumber = ()=> {
-    this.updateNumber(function(previousNum){
-        return (previousNum < MAX_GUESTS_NUMBER) ? previousNum + 1 : previousNum
+  plusNumber = () => {
+    this.updateNumber(function (previousNum) {
+      return (previousNum < MAX_GUESTS_NUMBER) ? previousNum + 1 : previousNum
     })
   };
 
-  updateNumber = (newNumberGenerator)=> {
+  updateNumber = (newNumberGenerator) => {
     let newNumber = newNumberGenerator(this.state.number);
-    this.setState({number: newNumber});
+    this.setState({ number: newNumber });
     this.props.onChange(newNumber);
   };
-  
+
 
   render() {
     return <div className={cx('single-guest-selector-wrapper')}>
@@ -39,12 +39,12 @@ class SingleGuestSelector extends React.Component {
           <span>{this.props.reminder}</span></div>
       </div>
       <div className={cx('single-guest-selector-right')}>
-        <button className={cx('sub-button',{'inactive-button':this.state.number<=0})} type="button">
+        <button className={cx('sub-button', { 'inactive-button': this.state.number <= 0 })} type="button">
           <i className={cx('sub-button-icon')} onClick={this.subNumber}></i>
         </button>
         <div className={cx('guest-number')}>{this.state.number}</div>
-        <button className={cx('plus-button',{'inactive-button':this.state.number>=16})} type="button">
-          <i className={cx('plus-button-icon')}  onClick={this.plusNumber}></i>
+        <button className={cx('plus-button', { 'inactive-button': this.state.number >= 16 })} type="button">
+          <i className={cx('plus-button-icon')} onClick={this.plusNumber}></i>
         </button>
       </div>
     </div>

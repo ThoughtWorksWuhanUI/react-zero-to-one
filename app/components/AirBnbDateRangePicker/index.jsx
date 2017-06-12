@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
-import {DateRangePicker} from 'react-dates';
+import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import styles from './styles.scss';
 import moment from 'moment';
@@ -20,31 +20,31 @@ class AirBnbDateRangePicker extends React.Component {
   }
 
   onDateFocusChange = (focusedInput) => {
-    this.setState({focusedInput});
+    this.setState({ focusedInput });
   };
 
   onDatesChange = (date) => {
-    this.setState({startDate: date.startDate, endDate: date.endDate});
+    this.setState({ startDate: date.startDate, endDate: date.endDate });
     if (!date.startDate && !date.endDate) {
-      this.setState({datePickerVisible: false})
+      this.setState({ datePickerVisible: false })
     }
-    this.props.onChange({startDate: date.startDate, endDate: date.endDate});
+    this.props.onChange({ startDate: date.startDate, endDate: date.endDate });
     if (date.startDate && date.endDate) {
       this.props.submit();
     }
   };
-  
-  showDatePicker = ()=> {
-    this.setState({datePickerVisible: true})
+
+  showDatePicker = () => {
+    this.setState({ datePickerVisible: true })
   };
-  
+
   render() {
-    const {focusedInput, startDate, endDate} = this.state;
+    const { focusedInput, startDate, endDate } = this.state;
     moment.locale('zh-cn');
     return (<div> {!this.state.datePickerVisible &&
       <input className={cx('input-box')} onClick={this.showDatePicker} type="text"
-             placeholder="任何时间"/>}
-        {this.state.datePickerVisible &&
+        placeholder="任何时间" />}
+      {this.state.datePickerVisible &&
         <DateRangePicker
           startDatePlaceholderText="入住日期"
           endDatePlaceholderText="退房日期"
@@ -55,7 +55,7 @@ class AirBnbDateRangePicker extends React.Component {
           onFocusChange={this.onDateFocusChange}
           monthFormat="YYYY[年]MMMM"
         />
-        }</div>
+      }</div>
     )
   }
 }

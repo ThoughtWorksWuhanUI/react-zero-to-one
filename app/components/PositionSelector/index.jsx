@@ -20,44 +20,44 @@ class PositionSelector extends React.Component {
     };
   }
 
-  onBlur = ()=> {
-    this.setState({isEdit: false});
+  onBlur = () => {
+    this.setState({ isEdit: false });
   };
 
-  onFocus = ()=> {
-    this.setState({isEdit: true});
+  onFocus = () => {
+    this.setState({ isEdit: true });
   };
 
   componentDidMount() {
     axios.get("http://react0to1.getsandbox.com/airbnb/position")
       .then((response) => {
-        this.setState({positions: response.data})
+        this.setState({ positions: response.data })
       })
       .catch(function (error) {
         console.log(error);
       });
   }
 
-  getSuggestions = (inputValue)=> {
+  getSuggestions = (inputValue) => {
     return this.state.positions.filter(function (e) {
       var searchString = inputValue.toLowerCase().trim();
       return (`${e.position}+${e.province}+${e.city}`).toLowerCase().includes(searchString);
     });
   };
 
-  onSuggestionsFetchRequested = ({value}) => {
-    this.setState({suggestions: this.getSuggestions(value)});
+  onSuggestionsFetchRequested = ({ value }) => {
+    this.setState({ suggestions: this.getSuggestions(value) });
   };
 
   onSuggestionsClearRequested = () => {
-    this.setState({suggestions: []});
+    this.setState({ suggestions: [] });
   };
 
-  onSuggestionSelected = ()=> {
+  onSuggestionSelected = () => {
     this.props.submit();
   };
-  
-  handleChange = (event, {newValue}) => {
+
+  handleChange = (event, { newValue }) => {
     this.setState({
       value: newValue
     });
@@ -65,7 +65,7 @@ class PositionSelector extends React.Component {
   };
 
   render() {
-    const {value, suggestions} = this.state;
+    const { value, suggestions } = this.state;
     const inputProps = {
       placeholder: '目的地,城市,地址',
       value,
@@ -86,20 +86,20 @@ class PositionSelector extends React.Component {
     return (
       <div className={cx('container')}>
         {!this.state.isEdit &&
-        <input className={cx('input-box')} value={this.state.value} placeholder='目的地,城市,地址' onChange={this.handleChange}
-               onFocus={this.onFocus} type="text"/>}
+          <input className={cx('input-box')} value={this.state.value} placeholder='目的地,城市,地址' onChange={this.handleChange}
+            onFocus={this.onFocus} type="text" />}
         {this.state.isEdit &&
-        <Autosuggest
-          theme={theme}
-          suggestions={suggestions}
-          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-          onSuggestionSelected={this.onSuggestionSelected}
-          getSuggestionValue={getSuggestionValue}
-          renderSuggestion={renderSuggestion}
-          inputProps={inputProps}
-        />}
+          <Autosuggest
+            theme={theme}
+            suggestions={suggestions}
+            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+            onSuggestionSelected={this.onSuggestionSelected}
+            getSuggestionValue={getSuggestionValue}
+            renderSuggestion={renderSuggestion}
+            inputProps={inputProps}
+          />}
       </div>);
   }
 }
-export  default PositionSelector
+export default PositionSelector
