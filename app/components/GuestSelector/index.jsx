@@ -28,11 +28,10 @@ class GuestSelector extends React.Component {
     this.setState({ openDropdownList: !this.state.openDropdownList })
   };
 
-  setGuestNumber = (key, value) => {
-    let data = this.state.guest;
-    data[key] = value;
-    this.setState({ guest: data });
-    this.props.updateSearchCriteria({ guest: data });
+  setGuestNumber = (newDate) => {
+    var newGuest = Object.assign(this.state.guest,newDate);
+    this.setState({ guest: newGuest });
+    this.props.updateSearchCriteria({ guest: newGuest });
   };
 
   submitChange = () => {
@@ -63,11 +62,11 @@ class GuestSelector extends React.Component {
       {openDropdownList &&
         <div className={cx('guest-selector')} onMouseLeave={this.submitChange}>
           <SingleGuestSelector title="成人" number={guest.adults}
-            onChange={(value) => this.setGuestNumber('adults', value)}></SingleGuestSelector>
+            onChange={(value) => this.setGuestNumber({adults :value})}></SingleGuestSelector>
           <SingleGuestSelector title="儿童" reminder="2 - 12岁" number={guest.children}
-            onChange={(value) => this.setGuestNumber('children', value)}></SingleGuestSelector>
+            onChange={(value) => this.setGuestNumber({children: value})}></SingleGuestSelector>
           <SingleGuestSelector title="婴幼儿" reminder="2岁以下" number={guest.infants}
-            onChange={(value) => this.setGuestNumber('infants', value)}></SingleGuestSelector>
+            onChange={(value) => this.setGuestNumber({infants: value})}></SingleGuestSelector>
 
           <div className={cx('selector-bottom')}>
             <div className={cx('selector-bottom-left')}>
