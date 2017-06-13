@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './styles.scss';
 import classNames from 'classnames/bind';
-
 const cx = classNames.bind(styles);
 const MAX_GUESTS_NUMBER = 16;
 class SingleGuestSelector extends React.Component {
