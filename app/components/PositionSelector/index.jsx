@@ -69,39 +69,34 @@ class PositionSelector extends React.Component {
     this.props.updateSearchCriteria({ where: newValue });
   };
 
+  getSuggestionValue = (suggestion) => {suggestion.position;};
+
+  renderSuggestion=(suggestion)=> {
+  return (
+    <span>{suggestion.position} {suggestion.province} {suggestion.city}</span>
+  )};
+
   render() {
-    const { value, suggestions } = this.state;
+    const { value, suggestions,isEdit } = this.state;
     const inputProps = {
       placeholder: '目的地,城市,地址',
       value,
       onChange: this.handleChange,
       onBlur: this.onBlur
     };
-
-    function getSuggestionValue(suggestion) {
-      return suggestion.position;
-    }
-
-    function renderSuggestion(suggestion) {
-      return (
-        <span>{suggestion.position} {suggestion.province} {suggestion.city}</span>
-      );
-    }
-
     return (
       <div className={cx('container')}>
-        {!this.state.isEdit &&
-          <input className={cx('input-box')} value={this.state.value} placeholder='目的地,城市,地址' onChange={this.handleChange}
-            onFocus={this.onFocus} type="text" />}
-        {this.state.isEdit &&
+        {!isEdit &&
+          <input className={cx('input-box')} value={value} placeholder='目的地,城市,地址' onChange={this.handleChange} onFocus={this.onFocus} type="text" />}
+        {isEdit &&
           <Autosuggest
             theme={theme}
             suggestions={suggestions}
             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
             onSuggestionsClearRequested={this.onSuggestionsClearRequested}
             onSuggestionSelected={this.onSuggestionSelected}
-            getSuggestionValue={getSuggestionValue}
-            renderSuggestion={renderSuggestion}
+            getSuggestionValue={this.getSuggestionValue}
+            renderSuggestion={this.renderSuggestion}
             inputProps={inputProps}
           />}
       </div>);

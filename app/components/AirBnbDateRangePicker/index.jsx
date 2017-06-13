@@ -44,10 +44,11 @@ class AirBnbDateRangePicker extends React.Component {
 
   render() {
     const { focusedInput, startDate, endDate } = this.state;
-    return (<div> {!this.state.datePickerVisible &&
-      <input className={cx('input-box')} onClick={this.showDatePicker} type="text"
-        placeholder="任何时间" />}
-      {this.state.datePickerVisible &&
+    return (
+      <div>
+        {!this.state.datePickerVisible && 
+        <input className={cx('input-box')} onClick={this.showDatePicker} type="text" placeholder="任何时间" />}
+        {this.state.datePickerVisible && 
         <DateRangePicker
           startDatePlaceholderText="入住日期"
           endDatePlaceholderText="退房日期"

@@ -4,19 +4,19 @@ import {mapDispatchToProps} from '../../redux/common/MapDispatchToProps';
 import styles from './styles.scss';
 import classNames from 'classnames/bind';
 import SingleGuestSelector from '../SingleGuestSelector'
-const cx = classNames.bind(styles);
 
+const cx = classNames.bind(styles);
 const mapStateToProps = (state) => ({
   guest: state.searchCriteria.guest
 });
+const defaultGuest = { adults: 1, children: 0, infants: 0 };
 
 class GuestSelector extends React.Component {
   constructor(props) {
     super(props);
-    this.defaultGuest = { adults: 1, children: 0, infants: 0 };
     this.state = {
       openDropdownList: props.openDropdownList,
-      guest: props.guest || this.defaultGuest
+      guest: props.guest
     };
   }
 
@@ -37,9 +37,8 @@ class GuestSelector extends React.Component {
 
   submitChange = () => {
     this.setState({ openDropdownList: false });
-    if (this.state.guest.adults === 1 && this.state.guest.children === 0 && this.state.guest.infants === 0) {
-      return;
-    } else {
+    var noChangeForGuests = this.state.guest.adults === 1 && this.state.guest.children === 0 && this.state.guest.infants === 0;
+    if (!noChangeForGuests) {
       this.props.submitSearch();
     }
   };
@@ -50,8 +49,8 @@ class GuestSelector extends React.Component {
 
   cancelSelect = (e) => {
     e && e.stopPropagation();
-    this.setState({ guest: this.defaultGuest, openDropdownList: false });
-    this.props.updateSearchCriteria({ guest: this.defaultGuest });
+    this.setState({ guest: defaultGuest, openDropdownList: false });
+    this.props.updateSearchCriteria({ guest: defaultGuest });
   };
 
   render() {
@@ -88,5 +87,8 @@ GuestSelector.propTypes = {
   searchCriteria: React.PropTypes.object,
   updateSearchCriteria: React.PropTypes.func,
   submitSearch: React.PropTypes.func
+};
+GuestSelector.defaultProps= {
+  guest:defaultGuest
 };
 export default connect(mapStateToProps, mapDispatchToProps)(GuestSelector);
