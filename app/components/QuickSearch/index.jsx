@@ -5,28 +5,13 @@ import classNames from 'classnames/bind';
 import GuestSelector from '../GuestSelector'
 import PositionSelector from '../PositionSelector'
 import AirBnbDateRangePicker from '../AirBnbDateRangePicker'
+import SearchSingleSection from '../SearchSingleSection'
 import styles from './styles.scss';
 
 const cx = classNames.bind(styles);
 
 const mapStateToProps = (state) => {
   return state.searchCriteria;
-};
-
-class SearchSingleSection extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <div className={cx('item')}>
-        <div className={cx('title')}><label>{this.props.title}</label></div>
-        <div className={cx('content')}>
-          {this.props.children}
-        </div>
-      </div>
-    );
-  }
 };
 
 class QuickSearch extends React.Component {

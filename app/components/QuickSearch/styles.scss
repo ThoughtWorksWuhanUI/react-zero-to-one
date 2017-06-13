@@ -31,24 +31,3 @@
     }
   }
 }
-
-.item {
-  width: 380px;
-  height: 100%;
-  display: table-cell;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-  .title label {
-    margin: 14px 0px 2px 16px;
-    display: block;
-    color: #484848;
-    font-size: 15px;
-    letter-spacing: 0.2px;
-  }
-  .content {
-    height: 50px;
-    margin-top: -3px;
-  }
-  &:not(:last-child) {
-    border-right: 1px solid #DBDBDB;
-  }
-}
