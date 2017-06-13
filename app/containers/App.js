@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware,combineReducers } from 'redux';
+import moment from 'moment';
 import thunk from 'redux-thunk';
 import HomePage from './HomePage';
 import searchCriteria from '../redux/reducer/SearchCriteria';
@@ -12,6 +13,7 @@ const store = createStoreWithMiddleware(combineReducers({searchCriteria,user}));
 
 class App extends React.Component {
   render() {
+    moment.locale('zh-cn');
     return (
       <Provider store={ store }>
         <HomePage/>

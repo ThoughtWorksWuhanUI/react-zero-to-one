@@ -5,7 +5,6 @@ import classNames from 'classnames/bind';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import styles from './styles.scss';
-import moment from 'moment';
 
 const cx = classNames.bind(styles);
 const mapStateToProps = (state) => ({
@@ -45,7 +44,6 @@ class AirBnbDateRangePicker extends React.Component {
 
   render() {
     const { focusedInput, startDate, endDate } = this.state;
-    moment.locale('zh-cn');
     return (<div> {!this.state.datePickerVisible &&
       <input className={cx('input-box')} onClick={this.showDatePicker} type="text"
         placeholder="任何时间" />}
