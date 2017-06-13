@@ -69,7 +69,7 @@ class PositionSelector extends React.Component {
     this.props.updateSearchCriteria({ where: newValue });
   };
 
-  getSuggestionValue = (suggestion) => {suggestion.position;};
+  getSuggestionValue = (suggestion) => {return suggestion.position;};
 
   renderSuggestion=(suggestion)=> {
   return (
