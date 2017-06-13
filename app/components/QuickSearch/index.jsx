@@ -45,22 +45,21 @@ class QuickSearch extends React.Component {
   };
 
   render() {
-    const { when, where, guest } = this.props;
     return (
       <div className={styles.container}>
         <form onSubmit={this.submitForm} ref="form">
           <div className={cx('search-wrapper')}>
             <SearchSingleSection title="地点">
-              <PositionSelector submit={this.submitForm}></PositionSelector>
+              <PositionSelector></PositionSelector>
             </SearchSingleSection>
             <SearchSingleSection title="时间">
-              <AirBnbDateRangePicker value={when} submit={this.submitForm} onChange={(value) => this.setState({ when: value })}></AirBnbDateRangePicker>
+              <AirBnbDateRangePicker></AirBnbDateRangePicker>
             </SearchSingleSection>
             <SearchSingleSection title="房客">
-              <GuestSelector value={guest} submit={this.submitForm} onChange={(value) => this.setState({ guest: value })}></GuestSelector>
+              <GuestSelector></GuestSelector>
             </SearchSingleSection>
             <div className={cx('search-button-wrapper')}>
-              <button className={cx('search-button')}>
+              <button className={cx('search-button')} onClick={this.searchCriteria}>
                 <span>搜索</span>
               </button>
             </div>

@@ -1,8 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { updateSearchCriteria, submitSearch } from '../../redux/actions';
 import styles from './styles.scss';
 import classNames from 'classnames/bind';
 import SingleGuestSelector from '../SingleGuestSelector'
 const cx = classNames.bind(styles);
+
+const mapStateToProps = (state) => ({
+  guest: state.searchCriteria.guest
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  updateSearchCriteria: (searchCriteria) => {
+    dispatch(updateSearchCriteria(searchCriteria));
+  },
+  submitSearch: () => {
+    dispatch(submitSearch());
+  }
+});
 
 class GuestSelector extends React.Component {
   constructor(props) {
@@ -10,7 +25,7 @@ class GuestSelector extends React.Component {
     this.defaultGuest = { adults: 1, children: 0, infants: 0 };
     this.state = {
       openDropdownList: props.openDropdownList,
-      guest: props.value || this.defaultGuest
+      guest: props.guest || this.defaultGuest
     };
   }
 
@@ -26,7 +41,7 @@ class GuestSelector extends React.Component {
     let data = this.state.guest;
     data[key] = value;
     this.setState({ guest: data });
-    this.props.onChange(data);
+    this.props.updateSearchCriteria({ guest: data });
   };
 
   submitChange = () => {
@@ -34,7 +49,7 @@ class GuestSelector extends React.Component {
     if (this.state.guest.adults === 1 && this.state.guest.children === 0 && this.state.guest.infants === 0) {
       return;
     } else {
-      this.props.submit();
+      this.props.submitSearch();
     }
   };
 
@@ -45,7 +60,7 @@ class GuestSelector extends React.Component {
   cancelSelect = (e) => {
     e && e.stopPropagation();
     this.setState({ guest: this.defaultGuest, openDropdownList: false });
-    this.props.onChange(this.defaultGuest);
+    this.props.updateSearchCriteria({ guest: this.defaultGuest });
   };
 
   render() {
@@ -78,4 +93,9 @@ class GuestSelector extends React.Component {
   }
 }
 
-export default GuestSelector;
+GuestSelector.propTypes = {
+  searchCriteria: React.PropTypes.object,
+  updateSearchCriteria: React.PropTypes.func,
+  submitSearch: React.PropTypes.func
+};
+export default connect(mapStateToProps, mapDispatchToProps)(GuestSelector);

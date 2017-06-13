@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { updateSearchCriteria, submitSearch } from '../../redux/actions';
 import classNames from 'classnames/bind';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
@@ -6,6 +8,18 @@ import styles from './styles.scss';
 import moment from 'moment';
 
 const cx = classNames.bind(styles);
+const mapStateToProps = (state) => ({
+  when: state.searchCriteria.when
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  updateSearchCriteria: (searchCriteria) => {
+    dispatch(updateSearchCriteria(searchCriteria));
+  },
+  submitSearch: () => {
+    dispatch(submitSearch());
+  }
+});
 
 class AirBnbDateRangePicker extends React.Component {
   constructor(props) {
@@ -14,8 +28,8 @@ class AirBnbDateRangePicker extends React.Component {
     this.state = {
       focusedInput,
       datePickerVisible: false,
-      startDate: props.value.startDate,
-      endDate: props.value.endDate
+      startDate: props.when.startDate,
+      endDate: props.when.endDate
     };
   }
 
@@ -28,9 +42,9 @@ class AirBnbDateRangePicker extends React.Component {
     if (!date.startDate && !date.endDate) {
       this.setState({ datePickerVisible: false })
     }
-    this.props.onChange({ startDate: date.startDate, endDate: date.endDate });
+    this.props.updateSearchCriteria({ when: { startDate: date.startDate, endDate: date.endDate } });
     if (date.startDate && date.endDate) {
-      this.props.submit();
+      this.props.submitSearch();
     }
   };
 
@@ -59,4 +73,9 @@ class AirBnbDateRangePicker extends React.Component {
     )
   }
 }
-export default AirBnbDateRangePicker;
+AirBnbDateRangePicker.propTypes = {
+  searchCriteria: React.PropTypes.object,
+  updateSearchCriteria: React.PropTypes.func,
+  submitSearch: React.PropTypes.func
+};
+export default connect(mapStateToProps, mapDispatchToProps)(AirBnbDateRangePicker);

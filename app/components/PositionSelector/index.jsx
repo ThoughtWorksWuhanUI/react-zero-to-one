@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { updateSearchCriteria,submitSearch } from '../../redux/actions';
 import classNames from 'classnames/bind';
 import 'react-dates/lib/css/_datepicker.css';
 import styles from './styles.scss';
 import theme from './theme.scss';
 import axios from 'axios';
-import { updateSearchCriteria } from '../../redux/actions';
 import Autosuggest from 'react-autosuggest';
 
 
@@ -17,6 +17,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   updateSearchCriteria: (searchCriteria) => {
     dispatch(updateSearchCriteria(searchCriteria));
+  },
+  submitSearch: () => {
+    dispatch(submitSearch());
   }
 });
 class PositionSelector extends React.Component {
@@ -64,7 +67,7 @@ class PositionSelector extends React.Component {
   };
 
   onSuggestionSelected = () => {
-    this.props.submit();
+    this.props.submitSearch();
   };
 
   handleChange = (event, { newValue }) => {
@@ -114,6 +117,7 @@ class PositionSelector extends React.Component {
 }
 PositionSelector.propTypes = {
   searchCriteria: React.PropTypes.object,
-  updateSearchCriteria: React.PropTypes.func
+  updateSearchCriteria: React.PropTypes.func,
+  submitSearch: React.PropTypes.func
 };
 export default connect(mapStateToProps, mapDispatchToProps)(PositionSelector);
