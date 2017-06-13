@@ -1,0 +1,20 @@
+{
+    "require": [
+      "babel-register"
+    ],
+    "sourceMap": false,
+    "instrument": false,
+    "extension": [
+      ".jsx",
+      ".es6"
+    ],
+    "exclude": [
+      "specs/*.js"
+    ],
+    "watermarks": {
+      "lines": [80, 95],
+      "functions": [80, 95],
+      "branches": [80, 95],
+      "statements": [80, 95]
+    }
+  }

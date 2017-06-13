@@ -2,4 +2,6 @@ node_modules
 .DS_Store
 dist
 .idea
+.nyc_output
+coverage
 npm-debug.log
