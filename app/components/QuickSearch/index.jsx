@@ -1,11 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import classNames from 'classnames/bind';
 import GuestSelector from '../GuestSelector'
 import PositionSelector from '../PositionSelector'
 import AirBnbDateRangePicker from '../AirBnbDateRangePicker'
 import styles from './styles.scss';
-
+import { submitSearch } from '../../redux/actions';
 const cx = classNames.bind(styles);
+
+const mapStateToProps = (state) => {
+  return state.searchCriteria;
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  submitSearch: () => {
+    dispatch(submitSearch());
+  }
+});
 
 class SearchSingleSection extends React.Component {
   constructor(props) {
@@ -26,26 +37,21 @@ class SearchSingleSection extends React.Component {
 class QuickSearch extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      when: { startDate: null, endDate: null },
-      where: null,
-      guest: { adults: 1, children: 0, infants: 0 }
-    };
   }
 
   submitForm = (e) => {
     e && e.preventDefault();
-    console.log("submit", this.state);
+    this.props.submitSearch();
   };
 
   render() {
-    const { when, where, guest } = this.state;
+    const { when, where, guest } = this.props;
     return (
       <div className={styles.container}>
         <form onSubmit={this.submitForm} ref="form">
           <div className={cx('search-wrapper')}>
             <SearchSingleSection title="地点">
-              <PositionSelector value={where} submit={this.submitForm} onChange={(value) => this.setState({ where: value })}></PositionSelector>
+              <PositionSelector submit={this.submitForm}></PositionSelector>
             </SearchSingleSection>
             <SearchSingleSection title="时间">
               <AirBnbDateRangePicker value={when} submit={this.submitForm} onChange={(value) => this.setState({ when: value })}></AirBnbDateRangePicker>
@@ -65,4 +71,9 @@ class QuickSearch extends React.Component {
   }
 }
 
-export default QuickSearch;
+QuickSearch.propTypes = {
+  searchCriteria: React.PropTypes.object,
+  submitSearch: React.PropTypes.func
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuickSearch);

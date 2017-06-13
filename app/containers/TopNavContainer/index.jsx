@@ -4,7 +4,7 @@ import TopNav from '../../components/TopNav';
 import {Login, Logout, Reset} from '../../redux/actions';
 
 const mapStateToProps = (state) => ({
-    user: state
+    user: state.user
 });
 
 const mapDispatchToProps = (dispatch) => ({

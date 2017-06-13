@@ -21,6 +21,15 @@ const LoginFailed = () => ({
   }
 });
 
+export const updateSearchCriteria = (partSearchCriteria) =>({
+  type: 'UPDATE',
+  searchCriteria:partSearchCriteria
+});
+
+export const submitSearch = ()=> ({
+  type: 'SUBMIT'
+});
+
 export const Reset = () => ({
   type: 'RESET LOGIN FORM'
 });

@@ -1,21 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import classNames from 'classnames/bind';
 import 'react-dates/lib/css/_datepicker.css';
 import styles from './styles.scss';
 import theme from './theme.scss';
 import axios from 'axios';
+import { updateSearchCriteria } from '../../redux/actions';
 import Autosuggest from 'react-autosuggest';
 
 
 const cx = classNames.bind(styles);
+const mapStateToProps = (state) => ({
+  where: state.searchCriteria.where
+});
 
+const mapDispatchToProps = (dispatch) => ({
+  updateSearchCriteria: (searchCriteria) => {
+    dispatch(updateSearchCriteria(searchCriteria));
+  }
+});
 class PositionSelector extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       positions: [],
       suggestions: [],
-      value: props.value || '',
+      value: props.where || '',
       isEdit: false
     };
   }
@@ -61,7 +71,7 @@ class PositionSelector extends React.Component {
     this.setState({
       value: newValue
     });
-    this.props.onChange(newValue);
+    this.props.updateSearchCriteria({ where: newValue });
   };
 
   render() {
@@ -102,4 +112,8 @@ class PositionSelector extends React.Component {
       </div>);
   }
 }
-export default PositionSelector
+PositionSelector.propTypes = {
+  searchCriteria: React.PropTypes.object,
+  updateSearchCriteria: React.PropTypes.func
+};
+export default connect(mapStateToProps, mapDispatchToProps)(PositionSelector);
