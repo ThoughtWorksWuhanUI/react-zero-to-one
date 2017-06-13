@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateSearchCriteria, submitSearch } from '../../redux/actions';
+import {mapDispatchToProps} from '../../redux/common/MapDispatchToProps';
 import styles from './styles.scss';
 import classNames from 'classnames/bind';
 import SingleGuestSelector from '../SingleGuestSelector'
@@ -8,15 +8,6 @@ const cx = classNames.bind(styles);
 
 const mapStateToProps = (state) => ({
   guest: state.searchCriteria.guest
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  updateSearchCriteria: (searchCriteria) => {
-    dispatch(updateSearchCriteria(searchCriteria));
-  },
-  submitSearch: () => {
-    dispatch(submitSearch());
-  }
 });
 
 class GuestSelector extends React.Component {

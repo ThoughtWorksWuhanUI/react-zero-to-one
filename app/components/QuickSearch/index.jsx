@@ -1,22 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import {mapDispatchToProps} from '../../redux/common/MapDispatchToProps';
 import classNames from 'classnames/bind';
 import GuestSelector from '../GuestSelector'
 import PositionSelector from '../PositionSelector'
 import AirBnbDateRangePicker from '../AirBnbDateRangePicker'
 import styles from './styles.scss';
-import { submitSearch } from '../../redux/actions';
+
 const cx = classNames.bind(styles);
 
 const mapStateToProps = (state) => {
   return state.searchCriteria;
 };
-
-const mapDispatchToProps = (dispatch) => ({
-  submitSearch: () => {
-    dispatch(submitSearch());
-  }
-});
 
 class SearchSingleSection extends React.Component {
   constructor(props) {

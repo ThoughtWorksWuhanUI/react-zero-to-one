@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateSearchCriteria, submitSearch } from '../../redux/actions';
+import {mapDispatchToProps} from '../../redux/common/MapDispatchToProps';
 import classNames from 'classnames/bind';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
@@ -10,15 +10,6 @@ import moment from 'moment';
 const cx = classNames.bind(styles);
 const mapStateToProps = (state) => ({
   when: state.searchCriteria.when
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  updateSearchCriteria: (searchCriteria) => {
-    dispatch(updateSearchCriteria(searchCriteria));
-  },
-  submitSearch: () => {
-    dispatch(submitSearch());
-  }
 });
 
 class AirBnbDateRangePicker extends React.Component {

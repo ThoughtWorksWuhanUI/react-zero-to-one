@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { updateSearchCriteria,submitSearch } from '../../redux/actions';
+import {mapDispatchToProps} from '../../redux/common/MapDispatchToProps';
 import classNames from 'classnames/bind';
 import 'react-dates/lib/css/_datepicker.css';
 import styles from './styles.scss';
@@ -14,14 +14,6 @@ const mapStateToProps = (state) => ({
   where: state.searchCriteria.where
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  updateSearchCriteria: (searchCriteria) => {
-    dispatch(updateSearchCriteria(searchCriteria));
-  },
-  submitSearch: () => {
-    dispatch(submitSearch());
-  }
-});
 class PositionSelector extends React.Component {
   constructor(props) {
     super(props);
