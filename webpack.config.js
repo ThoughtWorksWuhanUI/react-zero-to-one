@@ -3,13 +3,16 @@ const webpack = require('webpack');
 const path = require('path');
 
 const config = {
-  entry: './app/index.js',
+  entry: {
+    main: './app/index.js',
+    vendor: ['react', 'react-dom', 'react-redux', 'redux','redux-thunk', 'classnames']
+  },
   resolve: {
     extensions: ['.js', '.jsx', '.json']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.bundle.js'
+    filename: '[name].[hash].js'
   },
   module: {
     rules: [
@@ -53,6 +56,9 @@ const config = {
     ]
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor'
+    }),
     new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({ template: './app/index.html' })
   ],
