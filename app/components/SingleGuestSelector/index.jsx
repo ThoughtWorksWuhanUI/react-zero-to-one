@@ -27,14 +27,14 @@ class SingleGuestSelector extends React.Component {
 
   render() {
     const {number,title,reminder}=this.props;
-    return (<div className={cx('single-guest-selector-wrapper')}>
-      <div className={cx('single-guest-selector-left')}>
-        <div className={cx('single-guest-selector-title')}>
+    return (<div className={cx('wrapper')}>
+      <div className={cx('left')}>
+        <div className={cx('title')}>
           <span>{title}</span></div>
-        <div className={cx('single-guest-selector-reminder')}>
+        <div className={cx('reminder')}>
           <span>{reminder}</span></div>
       </div>
-      <div className={cx('single-guest-selector-right')}>
+      <div className={cx('right')}>
         <button className={cx('sub-button', { 'inactive-button': number <= 0 })} type="button">
           <i className={cx('sub-button-icon')} onClick={this.subNumber}></i>
         </button>

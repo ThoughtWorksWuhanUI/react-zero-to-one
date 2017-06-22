@@ -1,13 +1,13 @@
-.single-guest-selector-wrapper {
+.wrapper {
   margin: 24px 0px;
-  .single-guest-selector-left {
+  .left {
     display: inline-block;
     width: 50%;
-    .single-guest-selector-title {
+    .title {
       font-size: 19px;
       color: #484848;
     }
-    .single-guest-selector-reminder {
+    .reminder {
       font-weight: 300;
       color: #484848;
       line-height: 18px;
@@ -15,7 +15,7 @@
     }
   }
 
-  .single-guest-selector-right {
+  .right {
     display: inline-block;
     width: 50%;
     button {

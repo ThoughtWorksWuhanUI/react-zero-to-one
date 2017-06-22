@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {mapDispatchToProps} from '../../redux/common/MapDispatchToProps';
+import { mapDispatchToProps } from '../../redux/common/MapDispatchToProps';
 import styles from './styles.scss';
 import classNames from 'classnames/bind';
 import SingleGuestSelector from '../SingleGuestSelector'
@@ -29,7 +29,7 @@ class GuestSelector extends React.Component {
   };
 
   setGuestNumber = (newDate) => {
-    var newGuest = Object.assign(this.state.guest,newDate);
+    var newGuest = Object.assign(this.state.guest, newDate);
     this.setState({ guest: newGuest });
     this.props.updateSearchCriteria({ guest: newGuest });
   };
@@ -54,31 +54,33 @@ class GuestSelector extends React.Component {
 
   render() {
     const { openDropdownList, guest } = this.state;
-    return <div className={cx('dropdown-list')}>
-      <span className={cx('guest-total-number')}>{this.getTotalGuest()} 位房客</span>
-      <div className={cx('select-wrapper')} onClick={this.clickSelect}>
-        <i className={cx('down-select-icon', { 'has-click': openDropdownList })}></i>
-      </div>
-      {openDropdownList &&
-        <div className={cx('guest-selector')} onMouseLeave={this.submitChange}>
-          <SingleGuestSelector title="成人" number={guest.adults}
-            onChange={(value) => this.setGuestNumber({adults :value})}></SingleGuestSelector>
-          <SingleGuestSelector title="儿童" reminder="2 - 12岁" number={guest.children}
-            onChange={(value) => this.setGuestNumber({children: value})}></SingleGuestSelector>
-          <SingleGuestSelector title="婴幼儿" reminder="2岁以下" number={guest.infants}
-            onChange={(value) => this.setGuestNumber({infants: value})}></SingleGuestSelector>
+    return (
+      <button className={cx('dropdown-list')} onClick={this.clickSelect}>
+        <span className={cx('guest-total-number')}>{this.getTotalGuest()} 位房客</span>
+        <div className={cx('select-wrapper')}>
+          <i className={cx('down-select-icon', { 'has-click': openDropdownList })}></i>
+        </div>
+        {openDropdownList &&
+          <div className={cx('guest-selector')} onMouseLeave={this.submitChange}>
+            <SingleGuestSelector title="成人" number={guest.adults}
+              onChange={(value) => this.setGuestNumber({ adults: value })}></SingleGuestSelector>
+            <SingleGuestSelector title="儿童" reminder="2 - 12岁" number={guest.children}
+              onChange={(value) => this.setGuestNumber({ children: value })}></SingleGuestSelector>
+            <SingleGuestSelector title="婴幼儿" reminder="2岁以下" number={guest.infants}
+              onChange={(value) => this.setGuestNumber({ infants: value })}></SingleGuestSelector>
 
-          <div className={cx('selector-bottom')}>
-            <div className={cx('selector-bottom-left')}>
-              <button onClick={this.cancelSelect}><span>取消</span></button>
-            </div>
-            <div className={cx('selector-bottom-right')}>
-              <button onClick={this.applySelect}><span>确认</span></button>
+            <div className={cx('selector-bottom')}>
+              <div className={cx('selector-bottom-left')}>
+                <button onClick={this.cancelSelect}><span>取消</span></button>
+              </div>
+              <div className={cx('selector-bottom-right')}>
+                <button onClick={this.applySelect}><span>确认</span></button>
+              </div>
             </div>
           </div>
-        </div>
-      }
-    </div>
+        }
+      </button>
+    );
   }
 }
 
@@ -87,7 +89,7 @@ GuestSelector.propTypes = {
   updateSearchCriteria: React.PropTypes.func,
   submitSearch: React.PropTypes.func
 };
-GuestSelector.defaultProps= {
-  guest:defaultGuest
+GuestSelector.defaultProps = {
+  guest: defaultGuest
 };
 export default connect(mapStateToProps, mapDispatchToProps)(GuestSelector);
