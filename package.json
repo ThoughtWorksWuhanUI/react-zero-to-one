@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "test": "nyc mocha --require ignore-styles --compilers js:babel-core/register specs/.setup.js specs/**/*test.js && nyc report --reporter=lcov",
+    // "test": "nyc mocha --require ignore-styles --compilers js:babel-core/register specs/.setup.js specs/**/*test.js && nyc report --reporter=lcov",
     "dev": "webpack-dev-server --hot",
     "doc": "rm -rf ./dist && webpack && rm -rf ./docs/ && cp -rf ./dist ./docs"
   },
