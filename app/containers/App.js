@@ -9,6 +9,7 @@ import {
 import thunk from 'redux-thunk';
 import moment from 'moment';
 import HomePage from './HomePage';
+import TopNavContainer from './TopNavContainer'
 import SearchResultPage from './SearchResultPage';
 import searchCriteria from '../redux/reducer/SearchCriteria';
 import user from '../redux/reducer/user';
@@ -24,10 +25,7 @@ class App extends React.Component {
       <Provider store={store}>
         <Router>
           <div>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/search">About</Link></li>
-            </ul>
+            <TopNavContainer />
             <Route exact path="/" component={HomePage} />
             <Route path="/search" component={SearchResultPage} />
           </div>
