@@ -196,7 +196,21 @@ ReactDOM.render(<FirstComponent message="My First React App" />,
 [slide]
 # 使用样式
 [slide]
-## webpack loader
+## 直接用JS
+```javascript
+const divStyle = {
+  color: 'blue',
+  backgroundImage: 'url(' + imgUrl + ')',
+};
+
+class FirstComponent extends React.Component {
+  render() {
+    return <div style={ divStyle }>Hello, { this.props.message }</div>;
+  }
+}
+```
+[slide]
+## 用webpack loader来加载样式
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -209,7 +223,7 @@ class FirstComponent extends React.Component {
 }
 ```
 [slide]
-## webpack loader
+## 练习：webpack loader
 ```javascript
 module: {
   rules: [
@@ -289,27 +303,34 @@ this.setState((prevState, props) => ({
 [slide]
 ## 可控和非可控组件
 [slide]
-
-# Chaining Request {:&.flexbox.vleft}
-
-https://raw.githubusercontent.com/benweizhu/es6-promise-workshop/master/data/books.json
-
-```json
-[
-  {
-    "id": 1,
-    "name": "《重构 改善既有代码的设计》",
-    "price": 100,
-    "url": "https://raw.githubusercontent.com/benweizhu/es6-promise-workshop/master/data/refactoring.json"
-  },
-  {
-    "id": 2,
-    "name": "《JavaScript编程精粹》",
-    "price": 100,
-    "url": "https://raw.githubusercontent.com/benweizhu/es6-promise-workshop/master/data/javascript-the-good-parts.json"
-  }
-]
-
+## 可控组件
+```javascript
+render() {
+  return (
+    <form onSubmit={this.handleSubmit}>
+      <label>
+        Name:
+        <input type="text" value={this.state.value} onChange={this.handleChange} />
+      </label>
+      <input type="submit" value="Submit" />
+    </form>
+  );
+}
+```
+[slide]
+## 非可控组件
+```javascript
+render() {
+  return (
+    <form onSubmit={this.handleSubmit}>
+      <label>
+        Name:
+        <input type="text" ref={(input) => this.input = input} />
+      </label>
+      <input type="submit" value="Submit" />
+    </form>
+  );
+}
 ```
 [slide]
 # 在then中返回一个promise  {:&.flexbox.vleft}
