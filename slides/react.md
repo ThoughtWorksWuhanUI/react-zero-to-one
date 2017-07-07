@@ -15,14 +15,27 @@ usemathjax: yes
 # 你会学到的技术栈
 React, JSX, ES6, Redux, React-Router, Webpack, Babel...
 [slide]
-# React解决什么问题？
+# <span style="color:#61dafb">React</span>解决什么问题？
+
+A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES
 [slide]
-# 当有一天 {:&.flexbox.vleft}
-```javascript
-//JavaScript
-var user = userService.getUser(1); //返回一个Promise
-user.username; ?????? undefined ??????
-```
+## 构建随着时间数据不断变化的大规模应用程序
+[slide]
+## 仅仅表达出应用程序在任时间点应该的样子
+
+当数据变了，React自动处理所有用户界面的更新
+[slide]
+# Thinking in <span style="color:#61dafb">React</span>
+
+声明式（相对于命令式)
+
+状态机
+
+模板引擎 => 组件化
+
+组合而不是继承
+
+自顶而下的单向数据流
 [slide]
 # Promise是一个JavaScript对象
 [slide]
