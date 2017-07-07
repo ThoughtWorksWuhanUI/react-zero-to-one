@@ -1,40 +1,21 @@
-title: Promise Workshop
+title: React从0到1
 speaker: Benwei
-url: https://github.com/benweizhu/es6-promise-workshop
+url: https://github.com/ThoughtWorksWuhanUI/react-zero-to-one
 transition: slide3
 files: /js/demo.js,/css/demo.css,/js/zoom.js
 theme: moon
 usemathjax: yes
 
 [slide]
-# Promise Workshop
-## 一步步用会Promise
+# <div style="color:#61dafb">React从0到1</div>
+### React前端工作坊
 [slide]
-# 什么是Promise？ Promise用来做什么？
+# Why <span style="color:#61dafb">React?</span>
 [slide]
-# 异步操作
------
-* User interaction(mouse, keyboard, etc)
-* AJAX
-* Timers ...
+# 你会学到的技术栈
+React, JSX, ES6, Redux, React-Router, Webpack, Babel...
 [slide]
-# 习惯了jQuery的回调 {:&.flexbox.vleft}
-```javascript
-$.ajax({
-  url: '/user',
-  data: { id: 1 },
-  success: function (data) {
-    console.log(data)
-  },
-  dataType: 'json'
-});
-```
-# 习惯同步的Get方法
-```java
-//Java
-User user = userService.getUser(1);
-user.getUsername();
-```
+# React解决什么问题？
 [slide]
 # 当有一天 {:&.flexbox.vleft}
 ```javascript
