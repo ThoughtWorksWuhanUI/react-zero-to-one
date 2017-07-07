@@ -121,6 +121,8 @@ yarn add babel-preset-react --dev
 yarn add babel-preset-stage-2 --dev
 ```
 [slide]
+# Preset
+.babelrc
 ```json
 {
   "presets": [
@@ -134,64 +136,98 @@ yarn add babel-preset-stage-2 --dev
 * Plugin ordering is first to last.
 * Preset ordering is reversed (last to first).
 [slide]
-# Promise是异步操作 {:&.flexbox.vleft}
+# 练习：Get ready for webapp
+```html
+<!doctype html>
+<html>
 
-```javascript
-var promise = new Promise(function (resolve) {
-  console.log("inner promise");
-  resolve('resolve promise');
-});
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>React 0 to 1 Workshop</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
-promise.then(function (value) {
-  console.log(value);
-});
+<body>
+  <div id="app"></div>
+</body>
 
-console.log("outer promise");
-
+</html>
 ```
-哪部分是异步操作？
-[Have a look at the event Loop](http://latentflip.com/loupe/?code=dmFyIHByb21pc2UgPSBuZXcgUHJvbWlzZShmdW5jdGlvbiAocmVzb2x2ZSkgewogIGNvbnNvbGUubG9nKCJpbm5lciBwcm9taXNlIik7CiAgcmVzb2x2ZSgncmVzb2x2ZSBwcm9taXNlJyk7Cn0pOwoKcHJvbWlzZS50aGVuKGZ1bmN0aW9uICh2YWx1ZSkgewogIGNvbnNvbGUubG9nKHZhbHVlKTsKfSk7Cgpjb25zb2xlLmxvZygib3V0ZXIgcHJvbWlzZSIpOw%3D%3D!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D "Title")
-
-Checkout to step1-1 branch
 [slide]
+## webpack plugin
+```bash
+yarn add html-webpack-plugin --dev
+```
+webpack.config.js
+```
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+...
 
-# Promise的网络请求 {:&.flexbox.vleft}
+module.exports = {
+  ...
+  plugins: [
+    new HtmlWebpackPlugin({template: './app/index.html'})
+  ]
+};
+```
+index.html
+```
+var textnode = document.createTextNode("Hello React 0 to 1");
+document.body.appendChild(textnode);
+```
+[slide]
+# 练习：第一行React
 
 ```javascript
-function fetchData(URL) {
-  ...
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class FirstComponent extends React.Component {
+  render() {
+    return <div>Hello, {this.props.message}</div>;
+  }
 }
 
-var promise = fetchData('https://raw.githubusercontent.com/benweizhu/es6-promi
-se-workshop/master/data/books.json');
-
-promise.then(function (responseText) {
-  document.getElementById('json').innerHTML = responseText;
-  console.log(JSON.parse(responseText))
-}).catch(function (error) {
-  console.log(error)
-})
+ReactDOM.render(<FirstComponent message="My First React App" />,
+                                document.getElementById('app'));
 ```
-完成中间省略的部分
 [slide]
-# XHR {:&.flexbox.vleft}
+# 使用样式
+[slide]
+## webpack loader
 ```javascript
-var req = new XMLHttpRequest();
-req.open('GET', URL, true);
-req.onload = function () {
-  if (req.status === 200) {
-    console.log(req.responseText);
-  } else {
-    console.log(req.statusText);
+import React from 'react';
+import ReactDOM from 'react-dom';
+import styles from './FirstComponent.scss';
+
+class FirstComponent extends React.Component {
+  render() {
+    return <div className={styles.red}>Hello, { this.props.message }</div>;
   }
-};
-req.onerror = function () {
-  console.log(req.statusText);
-};
-req.send();
+}
 ```
 [slide]
-checkout to step3 to see the result
+## webpack loader
+```javascript
+module: {
+  rules: [
+    ...
+    {
+      test: /\.scss$/,
+      use: [{
+        loader: "style-loader"
+      }, {
+        loader: "css-loader",
+        options: { modules: true, localIdentName: '[path][name]__[local]--[hash:base64:5]' }
+      }, {
+        loader: "sass-loader"
+      }]
+    }
+  ]
+},
+```
 [slide]
 # Promise Chain {:&.flexbox.vleft}
 ```javascript
