@@ -229,39 +229,67 @@ module: {
 },
 ```
 [slide]
-# Promise Chain {:&.flexbox.vleft}
+# React生命周期
+[slide]
+# Mounting
+* constructor(props)
 ```javascript
-function increment(value) { return value + 1; }
-function output(value) { console.log(value); }
-/**  1 + 1 = 2 **/
-
-var promise = Promise.resolve(1);
-
-promise
-  .then(increment)
-  .then(output);
+// 思考一下，真实应用下，会用到state？
+constructor(props) {
+    super(props);
+    this.state = { color: props.initialColor };
+}
 ```
-不管是 then 还是 catch 方法调用，都返回了一个新的promise对象
+* componentWillMount()
+* render()
+```javascript
+render() { return null;}
+```
+* componentDidMount()
+```javascript
+componentDidMount() {
+    fetch('/users').then(function(users) {
+      this.setState({ users: users });
+    })
+}
+```
+[slide]
+# Updating
+* componentWillReceiveProps(nextProps) // 什么时候会用到？
+* shouldComponentUpdate(nextProps, nextState) //性能瓶颈
+```javascript
+By default, will return true.
+Returning false does not prevent child components from re-rendering
+when their state changes.
+```
+* componentWillUpdate() // 不要在这里调用this.setState()
+* render()
+* componentDidUpdate(prevProps, prevState) // 可以调用网络请求，如果有必要
+[slide]
+# this.setState(updater, [callback])
 
-问题：( 1 + 1 ) * 2 = 4
+* 不要直接改state，this.state.comment = 'Hello';
+* 延迟(异步的)批处理
+```javascript
+this.setState({username: 'Ben'})
+this.state.username // undefined
+```
+```javascript
+// Wrong
+this.setState({
+    counter: this.state.counter + this.props.increment,
+});
+```
+```javascript
+this.setState((prevState, props) => ({
+    counter: prevState.counter + props.increment
+}));
+```
+* state更新是merge操作
+[slide]
+## 可控和非可控组件
 [slide]
 
-# 问题：( 1 + 1 ) * 2 = 4 {:&.flexbox.vleft}
-```javascript
-function doubleUp(value) { return value * 2; }
-function increment(value) { return value + 1; }
-function output(value) { console.log(value); }
-/** ( 1 + 1 ) * 2 = 4 **/
-
-var promise = Promise.resolve(1);
-
-promise
-  .then(increment)
-  .then(doubleUp)
-  .then(output);
-```
-
-[slide]
 # Chaining Request {:&.flexbox.vleft}
 
 https://raw.githubusercontent.com/benweizhu/es6-promise-workshop/master/data/books.json
