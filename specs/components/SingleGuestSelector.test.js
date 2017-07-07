@@ -1,26 +1,26 @@
 import React from 'react';
 import { expect } from 'chai';
-import { shallow,mount } from 'enzyme';
-import  sinon  from 'sinon';
+import { shallow, mount } from 'enzyme';
+import sinon from 'sinon';
 
 import SingleGuestSelector from '../../app/components/SingleGuestSelector';
 
 
 describe('test <SingleGuestSelector />', () => {
   let wrapper, onChangeCallback;
-  const initNumber=1;
-  const getGuestNumber=(componentWrapper)=>{
+  const initNumber = 1;
+  const getGuestNumber = (componentWrapper) => {
     return componentWrapper.find('.guest-number').text()
   };
 
-  const generateComponentWithNumber=(number)=>{
-    return mount(<SingleGuestSelector title="foo" reminder="bar"  number={number} onChange={onChangeCallback}/>);
+  const generateComponentWithNumber = (number) => {
+    return mount(<SingleGuestSelector title="foo" reminder="bar" number={number} onChange={onChangeCallback} />);
   };
-  const generateComponentWithNumberWithCallback=(number)=>{
-    let mockOnChangeCallback=(value)=>{
+  const generateComponentWithNumberWithCallback = (number) => {
+    let mockOnChangeCallback = (value) => {
       newWrapper.setProps({ number: value });
     };
-    let newWrapper= mount(<SingleGuestSelector title="foo" reminder="bar"  number={number} onChange={mockOnChangeCallback}/>);
+    let newWrapper = mount(<SingleGuestSelector title="foo" reminder="bar" number={number} onChange={mockOnChangeCallback} />);
     return newWrapper;
   };
 
@@ -42,17 +42,17 @@ describe('test <SingleGuestSelector />', () => {
   });
 
   it('click sub button will trigger onChange callback again', () => {
-    var currentCallCount=onChangeCallback.callCount;
+    var currentCallCount = onChangeCallback.callCount;
     wrapper.find('.sub-button-icon').simulate('click');
 
-    expect(onChangeCallback).to.have.property('callCount', currentCallCount+1);
+    expect(onChangeCallback).to.have.property('callCount', currentCallCount + 1);
   });
 
   it('click plus button will plus one to the number when current number less than 16', () => {
     let newWrapper = generateComponentWithNumberWithCallback(1);
 
     newWrapper.find('.plus-button-icon').simulate('click');
-    
+
     expect(getGuestNumber(newWrapper)).to.equal('2');
   });
 
@@ -64,7 +64,7 @@ describe('test <SingleGuestSelector />', () => {
   });
 
   it('click sub button will sub one to the number when current number more than 0', () => {
-    let newWrapper =generateComponentWithNumberWithCallback(1);
+    let newWrapper = generateComponentWithNumberWithCallback(1);
     newWrapper.find('.sub-button-icon').simulate('click');
 
     expect(getGuestNumber(newWrapper)).to.equal('0');

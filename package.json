@@ -7,7 +7,6 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "test": "nyc mocha --require ignore-styles --compilers js:babel-core/register specs/.setup.js specs/**/*test.js && nyc report --reporter=lcov",
     "dev": "webpack-dev-server --hot",
     "doc": "rm -rf ./dist && webpack && rm -rf ./docs/ && cp -rf ./dist ./docs"
   },
@@ -22,6 +21,7 @@
     "react-dates": "^12.0.0",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
     "react-slick": "^0.14.11",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
@@ -43,6 +43,7 @@
     "jsdom": "^11.0.0",
     "mocha": "^3.4.2",
     "node-sass": "^4.5.3",
+    "nyc": "^11.0.3",
     "postcss-loader": "^2.0.5",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",

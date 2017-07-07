@@ -1,4 +1,5 @@
-  import React from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom'
 import classNames from 'classnames/bind';
 import styles from './styles.scss';
 import PopupMenu from './PopupMenu';
@@ -21,10 +22,10 @@ class TopNav extends React.Component {
   }
 
   hideLoginFormWhenLoginSuccessfully = (props) => {
-    if(this.state.showLoginForm && !props.user.errorMessage) {
-        this.setState({
-          showLoginForm: false
-        })
+    if (this.state.showLoginForm && !props.user.errorMessage) {
+      this.setState({
+        showLoginForm: false
+      })
     }
   }
 
@@ -38,7 +39,7 @@ class TopNav extends React.Component {
     this.setState({
       showLoginForm: !this.state.showLoginForm
     })
-    if(this.state.showLoginForm) {
+    if (this.state.showLoginForm) {
       this.props.resetLoginForm && this.props.resetLoginForm();
     }
   }
@@ -47,9 +48,9 @@ class TopNav extends React.Component {
     return (
       <div className={cx('login-register')}>
         <li><button>注册</button></li>
-        <li><button onClick={ this.toggleLoginForm }>登录</button></li>
+        <li><button onClick={this.toggleLoginForm}>登录</button></li>
         {
-          this.state.showLoginForm && <LoginForm user={this.props.user} handleClose={this.toggleLoginForm} handleLogin={ this.props.handleLogin }/>
+          this.state.showLoginForm && <LoginForm user={this.props.user} handleClose={this.toggleLoginForm} handleLogin={this.props.handleLogin} />
         }
       </div>
     )
@@ -59,10 +60,10 @@ class TopNav extends React.Component {
     return (
       <div className={cx('user-section')}>
         <li>
-          <button>{ this.props.user.name }</button>
+          <button>{this.props.user.name}</button>
         </li>
         <li>
-          <button onClick={ this.props.handleLogout }>
+          <button onClick={this.props.handleLogout}>
             登出
           </button>
         </li>
@@ -74,19 +75,19 @@ class TopNav extends React.Component {
   render() {
     return (
       <div className={cx('container')}>
-        <div className={cx('logo')}></div>
+        <Link to="/"><div className={cx('logo')}></div></Link>
         <div className={cx('nav')}>
           <nav>
             <ul>
               <li>
-                <button onClick={() =>this.toggleShowLandlordMenu()} onBlur={() => this.toggleShowLandlordMenu(true)}>成为房东</button>
+                <button onClick={() => this.toggleShowLandlordMenu()} onBlur={() => this.toggleShowLandlordMenu(true)}>成为房东</button>
                 <PopupMenu
                   className={cx('landlord-menu', { 'hidden': !this.state.showLandlordMenu })}
                   links={[{ id: 1, title: '出租房源', href: '' }, { id: 2, title: '展开体验', href: '' }]}
                 />
               </li>
               <li><button>帮助</button></li>
-              { this.props.user.isLoggedIn ? this.logoutSection() : this.loginSection() }
+              {this.props.user.isLoggedIn ? this.logoutSection() : this.loginSection()}
             </ul>
           </nav>
         </div>
