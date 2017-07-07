@@ -333,36 +333,15 @@ render() {
 }
 ```
 [slide]
-# 在then中返回一个promise  {:&.flexbox.vleft}
+# Debug
 
-* 如果你返回类似于promise的内容，下一个then()则会等待，并仅在promise产生结果（成功/失败）时调用 {:&.rollIn}
-[slide]
-
-# 在then中返回一个promise  {:&.flexbox.vleft}
 ```javascript
-function resolveAfterTime(num, time) {
-  return new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      resolve(num);
-    }, time)
-  });
+module.exports = {
+  ...
+  devtool: 'eval-source-map'
 }
 
-resolveAfterTime(10, 1000).then(function (value) {
-  console.log(value)
-  return resolveAfterTime(value + 10, 5000);
-}).then(function (value) {
-  console.log(value)
-});
 ```
-[slide]
-
-checkout to step5 to see the result
-[slide]
-## Promise.all
-
-接收一个promise对象的数组作为参数，当这个数组里的所有promise对象全部变为resolve或reject状态的时候，它才会去调用.then方法。
-
 [slide]
 
 ## 谢谢
