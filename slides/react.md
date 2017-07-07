@@ -58,68 +58,81 @@ yarn add webpack --dev
 yarn add babel-loader babel-core --dev
 ```
 [slide]
-<img src="https://webpack.js.org/cd0bb358c45b584743d8ce4991777c42.svg" height="80px" alt="Alt text">
+<div style="margin-bottom: 20px">
+  <img src="https://webpack.js.org/cd0bb358c45b584743d8ce4991777c42.svg" height="80px" alt="Alt text">
+  <span style="display:inline-block;line-height: 80px;vertical-align: top;">Bundle your things<span>
+</div>
 
-### bundle your scripts/styles/images/assets
+* bundle scripts/images/styles/assets
+* es2015 modules ...
+
 [slide]
-# <span style="color: green">成功（resolve）</span>
-
-```javascript
-var promise = new Promise(function (resolve) {
-  resolve(42); // pass 42 to then cb
-});
-promise.then(function (value) {
-  console.log(value);
-});
+## 练习：用Webpack打包编译
+```bash
+mkdir app
+touch ./app/index.js
+touch webpack.config.js
 ```
-[slide]
-# <span style="color: red">失败（reject）</span>
-
+webpack.config.js
 ```javascript
-var promise = new Promise(function (resolve, reject) {
-  reject(new Error('error')); // pass Error obj to catch cb
-});
-promise.catch(function (error) {
-  console.log(error);
-});
-```
-[slide]
+var path = require('path');
 
-# 练习
-
-创建一个Promise，并在业务代码中调用success
-
-```javascript
-function success(condition) {
-  return condition === 'promise';
-}
-```
-Checkout to basic branch
-[slide]
-Checkout to step1 branch
-```javascript
-const condition = 'promise';
-
-function success(condition) {
-  return condition === 'promise';
-}
-
-var promise = new Promise(function (resolve, reject) {
-  if (success(condition)) {
-    resolve('done');
-  } else {
-    reject('been reject');
+module.exports = {
+  entry: './app/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
   }
-});
+};
+```
+[slide]
+<img src="https://pbs.twimg.com/profile_images/567000326444556290/-1wfGjNw.png" height="150px" alt="Alt text">
 
-promise.then(function (value) {
-  console.log(value);
-}).catch(function (errorMessage) {
-  console.log(errorMessage)
-});
-
+### Babel is a JavaScript compiler
+[slide]
+# 练习 Babel + Webpack
+```javascript
+module.exports = {
+  ...
+  module: {
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+    ]
+  }
+};
 ```
 
+https://babeljs.io/repl/
+
+[slide]
+## Out of the box, <span style="color:#F5DA55">Babel</span> do nothing.
+```javascript
+const babel = code => code;
+```
+## <span style="color:#F5DA55">Babel</span> plugins
+```bash
+yarn add babel-plugin-check-es2015-constants --dev
+yarn add babel-plugin-transform-es2015-arrow-functions --dev
+```
+## <span style="color:#F5DA55">Babel</span> preset == a bundle of plugins
+```bash
+yarn add babel-preset-es2015 --dev
+yarn add babel-preset-react --dev
+yarn add babel-preset-stage-2 --dev
+```
+[slide]
+```json
+{
+  "presets": [
+    "es2015",
+    "react",
+    "stage-2"
+  ]
+}
+```
+* Plugins run before Presets.
+* Plugin ordering is first to last.
+* Preset ordering is reversed (last to first).
 [slide]
 # Promise是异步操作 {:&.flexbox.vleft}
 

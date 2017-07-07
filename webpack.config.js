@@ -5,7 +5,7 @@ const path = require('path');
 const config = {
   entry: {
     main: './app/index.js',
-    vendor: ['react', 'react-dom', 'react-redux', 'redux','redux-thunk', 'classnames']
+    vendor: ['react', 'react-dom', 'react-redux', 'redux', 'redux-thunk', 'classnames']
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json']
