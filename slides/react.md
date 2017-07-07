@@ -37,25 +37,30 @@ A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES
 
 自顶而下的单向数据流
 [slide]
-# Promise是一个JavaScript对象
+# 搭建开发环境
 [slide]
-# ES6 Promise语法 - new Promise
-```javascript
-var promise = new Promise(function (resolve, reject) {
-  // 业务代码
-});
-```
-[slide]
-```javascript
-var promise = new Promise(function (resolve, reject) {
-  // 业务代码
-});
-```
-### Promise中业务代码的执行有两个结果：
+## nvm and yarn
 
-<div style="margin-top: 10px">
-  <span style="color: green">成功（resolve）</span>或者 <span style="color: red">失败（reject）</span>
-</div>
+```bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+
+brew install yarn
+
+yarn init # 多一个yarn.lock文件
+```
+
+https://www.sitepoint.com/yarn-vs-npm/
+
+[slide]
+## webpack and babel
+```bash
+yarn add webpack --dev
+yarn add babel-loader babel-core --dev
+```
+[slide]
+<img src="https://webpack.js.org/cd0bb358c45b584743d8ce4991777c42.svg" height="80px" alt="Alt text">
+
+### bundle your scripts/styles/images/assets
 [slide]
 # <span style="color: green">成功（resolve）</span>
 
