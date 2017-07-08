@@ -8,7 +8,7 @@
          >
 </p>
 
-<p align="center">“React从0到1”前端工作坊</p>
+<p align="center" style="font-size:14px; font-weight:bold">A training for React | Redux | React Router | webpack | Babel</p>
 
 **GitBook**
 
