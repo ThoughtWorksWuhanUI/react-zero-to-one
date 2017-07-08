@@ -38,7 +38,11 @@ A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES
 自顶而下的单向数据流
 [slide]
 # Part I
-React环境搭建、React基础知识
+
+React开发环境
+
+React基础知识（上）
+
 [slide]
 # 搭建开发环境
 [slide]
@@ -346,10 +350,12 @@ module.exports = {
 
 ```
 [slide]
+# Part II
 
-## 谢谢
----
+React基础知识（下）
 
-参考资料：
+Presentational and Container Components
 
-https://facebook.github.io/react/
+Redux
+
+
