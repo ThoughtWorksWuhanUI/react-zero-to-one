@@ -10,7 +10,7 @@ import moment from 'moment';
 import HomePage from './HomePage';
 import TopNavContainer from './TopNavContainer'
 import SearchResultPage from './SearchResultPage';
-import SearchCriteria from '../redux/reducer/SearchCriteria';
+import searchCriteria from '../redux/reducer/SearchCriteria';
 import user from '../redux/reducer/user';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
