@@ -349,8 +349,4 @@ module.exports = {
 
 参考资料：
 
-[JavaScript Promise迷你书](http://liubin.org/promises-book/)
-
-[Google Promise](https://developers.google.com/web/fundamentals/getting-started/primers/promises?hl=zh-cn)
-
-[What the hell is event loop anyway](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html)
+https://facebook.github.io/react/
