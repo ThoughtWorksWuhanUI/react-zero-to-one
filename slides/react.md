@@ -37,6 +37,9 @@ A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES
 
 自顶而下的单向数据流
 [slide]
+# Part I
+React环境搭建、React基础知识
+[slide]
 # 搭建开发环境
 [slide]
 ## nvm and yarn
