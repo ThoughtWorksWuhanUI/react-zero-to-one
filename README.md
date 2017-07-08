@@ -8,7 +8,11 @@
          >
 </p>
 
-<p align="center" style="font-size:14px; font-weight:bold">A training for React | Redux | React Router | webpack | Babel</p>
+<p align="center">
+<sup>
+<strong>A training for React | Redux | React Router | webpack | Babel</strong>
+</sup>
+</p>
 
 **GitBook**
 
