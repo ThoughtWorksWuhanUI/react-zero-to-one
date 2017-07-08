@@ -3,9 +3,12 @@
          height="130">
 </p>
 
-[![Build Status](https://img.shields.io/travis/ThoughtWorksWuhanUI/react-zero-to-one/master.svg?style=flat-square)](https://travis-ci.org/ThoughtWorksWuhanUI/react-zero-to-one)
+<p align="center">
+    <img src="https://img.shields.io/travis/ThoughtWorksWuhanUI/react-zero-to-one/master.svg?style=flat-square"
+         >
+</p>
 
-“React从0到1”前端工作坊
+<p align="center">“React从0到1”前端工作坊</p>
 
 **GitBook**
 
