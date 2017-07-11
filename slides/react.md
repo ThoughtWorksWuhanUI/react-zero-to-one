@@ -313,6 +313,32 @@ this.setState((prevState, props) => ({
 ```
 * state更新是merge操作
 [slide]
+## State Updates are Merged
+
+```javascript
+constructor(props) {
+  super(props);
+  this.state = {
+    posts: [],
+    comments: []
+  };
+}
+componentDidMount() {
+  fetchPosts().then(response => {
+    this.setState({
+      posts: response.posts
+    });
+  });
+
+  fetchComments().then(response => {
+    this.setState({
+      comments: response.comments
+    });
+  });
+}
+
+```
+[slide]
 ## 可控和非可控组件
 [slide]
 ## 可控组件
