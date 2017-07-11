@@ -15,11 +15,16 @@ usemathjax: yes
 # 你会学到的技术栈
 React, JSX, ES6, Redux, React-Router, Webpack, Babel...
 [slide]
-# <span style="color:#61dafb">React</span>解决什么问题？
+# <span style="color:#61dafb">React</span>是什么？
 
 A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES
 [slide]
-## 构建随着时间数据不断变化的大规模应用程序
+
+# React isn't an MVC framework.
+
+React is a library for building composable user interfaces. It encourages the creation of reusable UI components which present data that changes over time.
+
+https://facebook.github.io/react/blog/2013/06/05/why-react.html
 [slide]
 ## 仅仅表达出应用程序在任时间点应该的样子
 
@@ -27,7 +32,7 @@ A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES
 [slide]
 # Thinking in <span style="color:#61dafb">React</span>
 
-声明式（相对于命令式)
+声明式（What, not how)
 
 状态机
 
@@ -261,7 +266,7 @@ constructor(props) {
     this.state = { color: props.initialColor };
 }
 ```
-* componentWillMount()
+* componentWillMount() //only lifecycle hook server render
 * render()
 ```javascript
 render() { return null;}
