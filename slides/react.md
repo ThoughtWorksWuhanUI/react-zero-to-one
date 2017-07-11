@@ -192,7 +192,7 @@ document.body.appendChild(textnode);
 [slide]
 # 练习：第一行React
 
-```javascript
+```html
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -342,7 +342,7 @@ componentDidMount() {
 ## 可控和非可控组件
 [slide]
 ## 可控组件
-```javascript
+```html
 render() {
   return (
     <form onSubmit={this.handleSubmit}>
@@ -357,7 +357,7 @@ render() {
 ```
 [slide]
 ## 非可控组件
-```javascript
+```html
 render() {
   return (
     <form onSubmit={this.handleSubmit}>
