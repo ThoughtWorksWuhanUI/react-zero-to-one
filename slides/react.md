@@ -512,6 +512,78 @@ handleClick = () => {
 }
 ```
 [slide]
+<div style="margin-bottom: 20px">
+  <img src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo-title-light.png" height="200px" alt="Alt text">
+</div>
+[slide]
+## __Presentational__ and <span style="color:orange;">Container</span> Components
+[slide]
+https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0
+
+Team @reactjs. Created Redux, React Hot Loader...
+[slide]
+## Presentational
+
+* Are concerned with __how things look__.
+* Often allow containment via this.props.children.
+* Have no dependencies on the rest of the app, such as Flux actions or stores.
+* Don’t specify how the data is loaded or mutated.
+* Receive data and callbacks exclusively via props.
+* Rarely have their own state (when they do, it’s UI state rather than data)...
+
+[slide]
+## Container
+
+* Are concerned with <span style="color:orange;">how things work</span>.
+* Provide the data and behavior to presentational or other container components.
+* Call Flux actions and provide these as callbacks to the presentational components.
+* Are often stateful, as they tend to serve as data sources.
+* Are usually generated using higher order components such as connect() from React Redux...
+[slide]
+## 它们之间的关系是什么样的？
+[slide]
+## Can I put a Container inside a Presentional?
+
+<img width="500" alt="2017-07-12 5 59 32" src="https://user-images.githubusercontent.com/5471228/28112541-f33c37a4-672b-11e7-89da-6d3c459c5431.png">
+
+[slide]
+* __Presentational__ May contain both presentational and container components** inside, and usually have some DOM markup and styles of their own.
+* <span style="color:orange;">Container</span> May contain both presentational and container components** inside but usually don’t have any DOM markup of their own except for some wrapping divs, and never have any styles.
+[slide]
+# store
+# reducer
+# action
+[slide]
+# Redux patten
+
+![redux-article-3-02](https://user-images.githubusercontent.com/5471228/28116143-53934f94-673a-11e7-88ed-4026f2f27f49.png)
+[slide]
+
+# Reducer
+
+![redux-article-3-04](https://user-images.githubusercontent.com/5471228/28116286-14fbb95a-673b-11e7-97b5-68098ee3dd01.png)
+
+## 为什么叫reducer?
+
+[slide]
+Array.prototype.reduce()
+```javascript
+let sum = [0, 1, 2, 3].reduce(function(acc, val) {
+  return acc + val;
+}, 0);
+```
+[slide]
+```javascript
+(previousState, action) => newState
+```
+
+Reducer是一个__纯函数__，在相同的参数的情况下，应该只是计算下一个state并返回它，没有任何副作用，没有任何API调用，没有任何参数操作，只是纯计算逻辑。
+[slide]
+
+Immutable Update Patterns
+
+http://redux.js.org/docs/recipes/reducers/ImmutableUpdatePatterns.html
+[slide]
 ## immutability - Tracking Changes
 
 ```javascript
@@ -528,3 +600,5 @@ var newPlayer = Object.assign({}, player, {score: 2});
 ```
 
 https://facebook.github.io/react/tutorial/tutorial.html#why-immutability-is-important
+
+[slide]
