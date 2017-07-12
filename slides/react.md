@@ -392,7 +392,11 @@ Redux
 [slide]
 ## Component
 
+<span style="color:red">vs</span>
+
 ## Functional stateless component
+
+<span style="color:red">vs</span>
 
 ## PureComponent
 [slide]
@@ -427,11 +431,11 @@ https://github.com/benweizhu/react-redux-you-should-know
 ### Functional vs Component vs PureComponent
 ![compare](https://cdn-images-1.medium.com/max/1600/1*w5AgUaaW1e_w-s6-oDxapg.png)
 [slide]
-## Keys in List
+## <span style="color:red">Keys</span> in List
 
-Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity.
+Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a 	__stable identity__.
 [slide]
-## Keys in List
+## <span style="color:red">Keys</span> in List
 ```html
 <ul>
   <li>first</li>
@@ -457,7 +461,7 @@ Keys help React identify which items have changed, are added, or are removed. Ke
 </ul>
 ```
 [slide]
-## Keys in List
+## <span style="color:red">Keys</span> in List
 
 ```html
 <ul>
@@ -473,12 +477,15 @@ Keys help React identify which items have changed, are added, or are removed. Ke
 ```
 https://github.com/benweizhu/react-redux-you-should-know/tree/master/unique-keys-for-children
 [slide]
-## Keys in List
+## <span style="color:red">Keys</span> in List
 ![keys](https://cloud.githubusercontent.com/assets/5471228/26673917/24c2b27c-46f1-11e7-936e-440d5da66dfb.png)
 https://github.com/benweizhu/react-redux-you-should-know/tree/master/unique-keys-for-children
 [slide]
-Keys used within arrays should be unique among their siblings. However they don't need to be globally unique.
+Keys used within arrays should be unique __among their siblings.__ However they <span style="color:red">don't need to be globally unique</span>.
 [slide]
+## Keys
+
 * Model/Data with unique ID is best choice.
 
 * When that's not the case, you can add a new ID property to your model or hash some parts of the content to generate a key.
+[slide]
