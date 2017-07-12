@@ -583,7 +583,10 @@ Reducer是一个__纯函数__，在相同的参数的情况下，应该只是计
 Immutable Update Patterns
 
 http://redux.js.org/docs/recipes/reducers/ImmutableUpdatePatterns.html
+
+http://redux.js.org/docs/faq/ImmutableData.html#how-does-react-redux-use-shallow-equality-checking-to-determine-whether-a-component-needs-re-rendering
 [slide]
+
 ## immutability - Tracking Changes
 
 ```javascript
