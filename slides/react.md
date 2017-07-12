@@ -357,7 +357,7 @@ render() {
 ```
 [slide]
 ## 非可控组件
-```html
+```
 render() {
   return (
     <form onSubmit={this.handleSubmit}>
@@ -389,4 +389,96 @@ Presentational and Container Components
 
 Redux
 
+[slide]
+## Component
 
+## Functional stateless component
+
+## PureComponent
+[slide]
+```
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+class Welcome extends React.PureComponent {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+```
+[slide]
+# Functional stateless component vs Component {:&.flexbox.vleft}
+
+Using stateless functional components is an <span style="color:red;">"architectural"</span> choice and <span style="color:grey">doesn't have any performance benefits</span> out of the box (yet).
+https://github.com/benweizhu/react-redux-you-should-know
+[slide]
+# Component vs PureComponent {:&.flexbox.vleft}
+
+Exactly like React.Component but implements shouldComponentUpdate() with a <span style="color:red">shallow</span> prop and state comparison.
+https://github.com/benweizhu/react-redux-you-should-know
+[slide]
+### Functional vs Component vs PureComponent
+![compare](https://cdn-images-1.medium.com/max/1600/1*w5AgUaaW1e_w-s6-oDxapg.png)
+[slide]
+## Keys in List
+
+Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity.
+[slide]
+## Keys in List
+```html
+<ul>
+  <li>first</li>
+  <li>second</li>
+</ul>
+
+<ul>
+  <li>first</li>
+  <li>second</li>
+  <li>third</li>
+</ul>
+```
+```html
+<ul>
+  <li>first</li>
+  <li>second</li>
+</ul>
+
+<ul>
+  <li>third</li>
+  <li>first</li>
+  <li>second</li>
+</ul>
+```
+[slide]
+## Keys in List
+
+```html
+<ul>
+  <li key="2015">Duke</li>
+  <li key="2016">Villanova</li>
+</ul>
+
+<ul>
+  <li key="2014">Connecticut</li>
+  <li key="2015">Duke</li>
+  <li key="2016">Villanova</li>
+</ul>
+```
+https://github.com/benweizhu/react-redux-you-should-know/tree/master/unique-keys-for-children
+[slide]
+## Keys in List
+![keys](https://cloud.githubusercontent.com/assets/5471228/26673917/24c2b27c-46f1-11e7-936e-440d5da66dfb.png)
+https://github.com/benweizhu/react-redux-you-should-know/tree/master/unique-keys-for-children
+[slide]
+Keys used within arrays should be unique among their siblings. However they don't need to be globally unique.
+[slide]
+* Model/Data with unique ID is best choice.
+
+* When that's not the case, you can add a new ID property to your model or hash some parts of the content to generate a key.
