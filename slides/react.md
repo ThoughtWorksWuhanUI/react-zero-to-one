@@ -483,11 +483,13 @@ https://github.com/benweizhu/react-redux-you-should-know/tree/master/unique-keys
 [slide]
 Keys used within arrays should be unique __among their siblings.__ However they <span style="color:red">don't need to be globally unique</span>.
 [slide]
-## Keys
+# Keys
 
-* Model/Data with unique ID is best choice.
+* Model/Data with __unique ID__ is best choice.
 
-* When that's not the case, you can add a new ID property to your model or hash some parts of the content to generate a key.
+* When that's not the case, you can __add a new ID property__ to your model or __hash some parts__ of the content to generate a key.
+
+* If you don't specify any key, React will warn you and __fall back to using the array index as a key__ – which is <span style="color:red;">not the correct choice</span> if you ever reorder elements in the list or add/remove items anywhere but the bottom of the list.
 [slide]
 ## Autobinding
 
@@ -509,3 +511,20 @@ handleClick = () => {
   alert(this.state.message);
 }
 ```
+[slide]
+## immutability - Tracking Changes
+
+```javascript
+var player = {score: 1, name: 'Jeff'};
+player.score = 2;
+// Now player is {score: 2, name: 'Jeff'}
+```
+
+```javascript
+var player = {score: 1, name: 'Jeff'};
+
+var newPlayer = Object.assign({}, player, {score: 2});
+// Now player is unchanged, but newPlayer is {score: 2, name: 'Jeff'}
+```
+
+https://facebook.github.io/react/tutorial/tutorial.html#why-immutability-is-important
