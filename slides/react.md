@@ -489,3 +489,23 @@ Keys used within arrays should be unique __among their siblings.__ However they 
 
 * When that's not the case, you can add a new ID property to your model or hash some parts of the content to generate a key.
 [slide]
+## Autobinding
+
+```javascript
+constructor(props) {
+  super(props);
+  this.state = {message: 'Hello!'};
+  // This line is important!
+  this.handleClick = this.handleClick.bind(this);
+}
+
+handleClick() {
+  alert(this.state.message);
+}
+```
+
+```javascript
+handleClick = () => {
+  alert(this.state.message);
+}
+```
