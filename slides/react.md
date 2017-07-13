@@ -410,6 +410,20 @@ shouldComponentUpdate(nextProps, nextState) {
 }
 ```
 [slide]
+## What does Immutability mean?
+```javascript
+var player = {score: 1, name: 'Jeff'};
+player.score = 2;
+// Now player is {score: 2, name: 'Jeff'}
+```
+
+```javascript
+var player = {score: 1, name: 'Jeff'};
+
+var newPlayer = Object.assign({}, player, {score: 2});
+// Now player is unchanged, but newPlayer is {score: 2, name: 'Jeff'}
+```
+[slide]
 ```
 class Welcome extends React.Component {
   render() {
@@ -616,6 +630,25 @@ store.dispatch(addTodo('Read the docs'))
 store.dispatch(addTodo('Read about the middleware'))
 ```
 [slide]
+# react-redux
+[slide]
+## Connect
+
+```javascript
+import { connect } from 'react-redux'
+
+class VisibleTodoList extends React.Component {
+  ...
+}
+
+const VisibleTodoList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList)
+
+export default VisibleTodoList
+```
+[slide]
 # 高阶组件
 [slide]
 # 函数式编程 - 高阶函数 {:&.flexbox.vleft}
@@ -635,11 +668,71 @@ function add(x) {
 var add2 = add(2)
 ```
 [slide]
-Each time React-Redux’s connect function is called, it will perform a shallow equality check on its stored reference to the root state object, and the current root state object passed to it from the store. If the check passes, the root state object has not been updated, and so there is no need to re-render the component, or even call mapStateToProps.
+## Immutability in Redux
 [slide]
-If the check fails, however, the root state object has been updated, and so connect will call mapStateToPropsto see if the props for the wrapped component have been updated.
+## Reducer return a copy of state
+```javascript
+function todoApp(state = initialState, action) {
+  switch (action.type) {
+    case SET_VISIBILITY_FILTER:
+      return Object.assign({}, state, {
+        visibilityFilter: action.filter
+      })
+    default:
+      return state
+  }
+}
+```
+[slide]
 
-It does this by performing a shallow equality check on each value within the object individually, and will only trigger a re-render if one of those checks fails.
+# shallow equality check {:&.flexbox.vleft}
+
+Each time React-Redux’s connect function is called, it will perform a shallow equality check on its stored reference to the root state object, and the current root state object passed to it from the store.
+
+If the check passes, the root state object has not been updated, and so there is __no need to re-render the component, or even call mapStateToProps__.
+[slide]
+# What about combineReducers? {:&.flexbox.vleft}
+combineReducers will construct a new state object __with the state slices returned from each reducer__.
+
+This new state object may or may not be different from the current state object.
+
+It is here that combineReducers uses shallow equality checking to determine whether the state has changed.
+[slide]
+## Sometime it still doesn't rendering？
+[slide]
+```javascript
+function updateNestedState(state, action) {
+    let nestedState = state.nestedState;
+    // ERROR: this directly modifies the existing object reference - don't do this!
+    nestedState.nestedField = action.data;
+
+    return {
+        ...state,
+        nestedState
+    };
+}
+```
+
+```javascript
+function updateNestedState(state, action) {
+    // Problem: this only does a shallow copy!
+    let newState = {...state};
+
+    // ERROR: nestedState is still the same object!
+    newState.nestedState.nestedField = action.data;
+
+    return newState;
+}
+```
+[slide]
+# shallow check in connect {:&.flexbox.vleft}
+
+If the root state equality __check fails__, means, the root state object has been updated, and so connect will call mapStateToProps to see if the props for the wrapped component have been updated.
+
+It does this by performing __a shallow equality check__ on __each value within the object individually__, and will only trigger a re-render if one of those checks fails.
+
+[slide]
+# shallow check in connect {:&.flexbox.vleft}
 
 ```javascript
 function mapStateToProps(state) {
@@ -651,47 +744,16 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(TodoApp)
 ```
-[slide]
-Connect Component does shallow compare
-
+connect() method source code
 ```javascript
+
 return function wrapWithConnect(WrappedComponent) {
     class Connect extends Component {
       ...
-
       shouldComponentUpdate(nextProps, nextState) {
         return !shallowEqual(this.state.props, nextState.props);
       }
-
     }
 };
 ```
-[slide]
-For React Redux, connect checks to see if the props returned from a mapStateToProps function have changed in order to determine if a component needs to update. To improve performance, connect takes some shortcuts that rely on the state being immutable, and uses shallow reference equality checks to detect changes. This means that changes made to objects and arrays by direct mutation will not be detected, and components will not re-render.
-[slide]
-
-Immutable Update Patterns
-
-http://redux.js.org/docs/recipes/reducers/ImmutableUpdatePatterns.html
-
-http://redux.js.org/docs/faq/ImmutableData.html#how-does-react-redux-use-shallow-equality-checking-to-determine-whether-a-component-needs-re-rendering
-[slide]
-
-## immutability - Tracking Changes
-
-```javascript
-var player = {score: 1, name: 'Jeff'};
-player.score = 2;
-// Now player is {score: 2, name: 'Jeff'}
-```
-
-```javascript
-var player = {score: 1, name: 'Jeff'};
-
-var newPlayer = Object.assign({}, player, {score: 2});
-// Now player is unchanged, but newPlayer is {score: 2, name: 'Jeff'}
-```
-
-https://facebook.github.io/react/tutorial/tutorial.html#why-immutability-is-important
-
 [slide]
