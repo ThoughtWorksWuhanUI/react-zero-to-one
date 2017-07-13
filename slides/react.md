@@ -564,7 +564,7 @@ Team @reactjs. Created Redux, React Hot Loader...
 # reducer
 # action
 [slide]
-# Redux patten
+# React-Redux patten
 
 ![redux-article-3-02](https://user-images.githubusercontent.com/5471228/28116143-53934f94-673a-11e7-88ed-4026f2f27f49.png)
 [slide]
@@ -588,6 +588,86 @@ let sum = [0, 1, 2, 3].reduce(function(acc, val) {
 ```
 
 Reducer是一个__纯函数__，在相同的参数的情况下，应该只是计算下一个state并返回它，没有任何副作用，没有任何API调用，没有任何参数操作，只是纯计算逻辑。
+[slide]
+## action
+只关心做什么
+```javascript
+{
+  type: ADD_TODO,
+  text: 'Build my first Redux app'
+}
+```
+[slide]
+## store
+掌握应用的状态，也是reducer和action的枢纽
+```javascript
+import { createStore } from 'redux'
+import todoApp from './reducers'
+let store = createStore(todoApp)
+
+function addTodo(text) {
+  return {
+    type: 'ADD_TODO',
+    text
+  }
+}
+
+store.dispatch(addTodo('Read the docs'))
+store.dispatch(addTodo('Read about the middleware'))
+```
+[slide]
+# 高阶组件
+[slide]
+# 函数式编程 - 高阶函数 {:&.flexbox.vleft}
+
+Take a function as one of its arguments
+
+* Map
+* Reduce
+
+Returns a function
+```javascript
+function add(x) {
+  return function(y) {
+    return x + y
+  }
+}
+var add2 = add(2)
+```
+[slide]
+Each time React-Redux’s connect function is called, it will perform a shallow equality check on its stored reference to the root state object, and the current root state object passed to it from the store. If the check passes, the root state object has not been updated, and so there is no need to re-render the component, or even call mapStateToProps.
+[slide]
+If the check fails, however, the root state object has been updated, and so connect will call mapStateToPropsto see if the props for the wrapped component have been updated.
+
+It does this by performing a shallow equality check on each value within the object individually, and will only trigger a re-render if one of those checks fails.
+
+```javascript
+function mapStateToProps(state) {
+  return {
+    todos: state.todos, // prop value
+    visibleTodos: getVisibleTodos(state) // selector
+  }
+}
+
+export default connect(mapStateToProps)(TodoApp)
+```
+[slide]
+Connect Component does shallow compare
+
+```javascript
+return function wrapWithConnect(WrappedComponent) {
+    class Connect extends Component {
+      ...
+
+      shouldComponentUpdate(nextProps, nextState) {
+        return !shallowEqual(this.state.props, nextState.props);
+      }
+
+    }
+};
+```
+[slide]
+For React Redux, connect checks to see if the props returned from a mapStateToProps function have changed in order to determine if a component needs to update. To improve performance, connect takes some shortcuts that rely on the state being immutable, and uses shallow reference equality checks to detect changes. This means that changes made to objects and arrays by direct mutation will not be detected, and components will not re-render.
 [slide]
 
 Immutable Update Patterns
