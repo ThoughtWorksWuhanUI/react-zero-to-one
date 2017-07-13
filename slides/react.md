@@ -400,6 +400,16 @@ Redux
 
 ## PureComponent
 [slide]
+# Immutability in React
+
+React can’t assume anything about your state. You can mutate it however you want. That’s why setting state always re-renders the component - even if it’s not necessary at all.
+
+```javascript
+shouldComponentUpdate(nextProps, nextState) {
+
+}
+```
+[slide]
 ```
 class Welcome extends React.Component {
   render() {
