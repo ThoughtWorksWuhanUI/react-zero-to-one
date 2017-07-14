@@ -22,3 +22,11 @@
 **Demo**
 
 [https://thoughtworkswuhanui.github.io/react-zero-to-one/](https://thoughtworkswuhanui.github.io/react-zero-to-one/)
+
+
+**slides**
+
+```
+cd slides
+nodeppt start
+```
