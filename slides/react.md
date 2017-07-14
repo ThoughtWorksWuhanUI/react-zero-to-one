@@ -775,3 +775,11 @@ return function wrapWithConnect(WrappedComponent) {
 <span style="font-size:18px">Dan Abramov @Co-authored Redux, Create React App, React Hot Loader</span>
 [slide]
 ##One Basic Rule: Keep it simple
+[slide]
+## How to structure redux code?
+[slide]
+## How to structure redux code?
+
+* Rails-style: separate folders for “actions”, “constants”, “reducers”, “containers”, and “components”
+* Domain-style: separate folders per feature or domain, possibly with sub-folders per file type
+* “Ducks”: similar to domain style, but explicitly tying together actions and reducers, often by defining them in the same file
