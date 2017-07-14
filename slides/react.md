@@ -757,3 +757,21 @@ return function wrapWithConnect(WrappedComponent) {
 };
 ```
 [slide]
+## Do I have to put all my state into Redux?
+[slide]
+# Ask yourself these questions: {:&.flexbox.vleft}
+* Do other parts of the application care about this data?
+* Do you need to be able to create further derived data based on this original data?
+* Is the same data being used to drive multiple components?
+* Is there value to you in being able to restore this state to a given point in time (ie, time travel debugging)?
+* Do you want to cache the data (ie, use what's in state if it's already there instead of re-requesting it)?
+[slide]
+## How to choose between Redux's store and React's state?
+![image](https://user-images.githubusercontent.com/5471228/28198439-cb23b150-6890-11e7-8bf3-a666b821785f.png)
+
+[slide]
+![Should I keep something in React component state?](https://pbs.twimg.com/media/CmeBsGzW8AQp_av.jpg)
+
+<span style="font-size:18px">Dan Abramov @Co-authored Redux, Create React App, React Hot Loader</span>
+[slide]
+##One Basic Rule: Keep it simple
