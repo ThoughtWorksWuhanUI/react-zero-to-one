@@ -774,12 +774,41 @@ return function wrapWithConnect(WrappedComponent) {
 
 <span style="font-size:18px">Dan Abramov @Co-authored Redux, Create React App, React Hot Loader</span>
 [slide]
-##One Basic Rule: Keep it simple
+## One Basic Rule: Keep it simple
 [slide]
 ## How to structure redux code?
 [slide]
 ## How to structure redux code?
 
-* Rails-style: separate folders for “actions”, “constants”, “reducers”, “containers”, and “components”
+* Rails-style: separate folders for __“actions”__, “constants”, __“reducers”__, __“containers”__, and __“components”__
 * Domain-style: separate folders per feature or domain, possibly with sub-folders per file type
 * “Ducks”: similar to domain style, but explicitly tying together actions and reducers, often by defining them in the same file
+[slide]
+### Ducks
+
+```javascript
+const LOAD   = 'my-app/widgets/LOAD';
+const CREATE = 'my-app/widgets/CREATE';
+const UPDATE = 'my-app/widgets/UPDATE';
+const REMOVE = 'my-app/widgets/REMOVE';
+
+export default function reducer(state = {}, action = {}) {
+  switch (action.type) {
+    // do reducer stuff
+    default: return state;
+  }
+}
+
+// Action Creators
+export function loadWidgets() {
+  return { type: LOAD };
+}
+
+export function createWidget(widget) {
+  return { type: CREATE, widget };
+}
+
+export function getWidget () {
+  return dispatch => get('/widget').then(widget => dispatch(setWidget(widget)))
+}
+```
