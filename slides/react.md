@@ -782,7 +782,7 @@ return function wrapWithConnect(WrappedComponent) {
 
 * Rails-style: separate folders for __“actions”__, “constants”, __“reducers”__, __“containers”__, and __“components”__
 * Domain-style: separate folders per feature or domain, possibly with sub-folders per file type
-* “Ducks”: similar to domain style, but explicitly tying together actions and reducers, often by defining them in the same file
+* __“Ducks”__: similar to domain style, but explicitly tying together actions and reducers, often by defining them in the same file
 [slide]
 ### Ducks
 
