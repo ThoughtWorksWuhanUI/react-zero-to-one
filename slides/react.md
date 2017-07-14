@@ -812,3 +812,12 @@ export function getWidget () {
   return dispatch => get('/widget').then(widget => dispatch(setWidget(widget)))
 }
 ```
+[slide]
+## [Reselect](https://github.com/reactjs/reselect)
+
+* extract mapSateToProps logic
+* compute derived data
+* efficient
+-----
+
+### Tuturiol: https://www.youtube.com/watch?v=XCQ0ZSr-a2o
