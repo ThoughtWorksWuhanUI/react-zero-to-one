@@ -781,6 +781,24 @@ return function wrapWithConnect(WrappedComponent) {
 };
 ```
 [slide]
+## Alwasy re-rendering
+```
+const mapStateToProps = state => {
+  return {
+    objects: state.objectIds.map(id => state.objects[id])
+  }
+}
+```
+[slide]
+## [Reselect](https://github.com/reactjs/reselect)
+
+* extract mapSateToProps logic
+* compute derived data
+* efficient
+-----
+
+### Tuturiol: https://www.youtube.com/watch?v=XCQ0ZSr-a2o
+[slide]
 ## Do I have to put all my state into Redux?
 [slide]
 # Ask yourself these questions: {:&.flexbox.vleft}
@@ -836,21 +854,3 @@ export function getWidget () {
   return dispatch => get('/widget').then(widget => dispatch(setWidget(widget)))
 }
 ```
-[slide]
-## Alwasy re-rendering
-```
-const mapStateToProps = state => {
-  return {
-    objects: state.objectIds.map(id => state.objects[id])
-  }
-}
-```
-[slide]
-## [Reselect](https://github.com/reactjs/reselect)
-
-* extract mapSateToProps logic
-* compute derived data
-* efficient
------
-
-### Tuturiol: https://www.youtube.com/watch?v=XCQ0ZSr-a2o
