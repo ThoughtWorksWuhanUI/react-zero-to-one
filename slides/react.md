@@ -649,7 +649,6 @@ const VisibleTodoList = connect(
 export default VisibleTodoList
 ```
 [slide]
-[slide]
 # 高阶组件
 [slide]
 # 函数式编程 - 高阶函数 {:&.flexbox.vleft}
@@ -786,7 +785,15 @@ return function wrapWithConnect(WrappedComponent) {
 ```
 [slide]
 ## Alwasy re-rendering
+```javascript
+function mapStateToProps(state) {
+  return {
+    todos: state.todos, // prop value
+    visibleTodos: getVisibleTodos(state) // selector
+  }
+}
 ```
+```javascript
 const mapStateToProps = state => {
   return {
     objects: state.objectIds.map(id => state.objects[id])
