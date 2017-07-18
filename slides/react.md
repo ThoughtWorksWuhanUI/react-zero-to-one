@@ -400,6 +400,24 @@ Redux
 
 ## PureComponent
 [slide]
+```
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+class Welcome extends React.PureComponent {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+```
+[slide]
 # Immutability in React
 
 React can’t assume anything about your state. You can mutate it however you want. That’s why setting state always re-renders the component - even if it’s not necessary at all.
@@ -422,24 +440,6 @@ var player = {score: 1, name: 'Jeff'};
 
 var newPlayer = Object.assign({}, player, {score: 2});
 // Now player is unchanged, but newPlayer is {score: 2, name: 'Jeff'}
-```
-[slide]
-```
-class Welcome extends React.Component {
-  render() {
-    return <h1>Hello, {this.props.name}</h1>;
-  }
-}
-
-function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
-}
-
-class Welcome extends React.PureComponent {
-  render() {
-    return <h1>Hello, {this.props.name}</h1>;
-  }
-}
 ```
 [slide]
 # Functional stateless component vs Component {:&.flexbox.vleft}
