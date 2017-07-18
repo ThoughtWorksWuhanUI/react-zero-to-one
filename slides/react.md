@@ -649,6 +649,7 @@ const VisibleTodoList = connect(
 export default VisibleTodoList
 ```
 [slide]
+[slide]
 # 高阶组件
 [slide]
 # 函数式编程 - 高阶函数 {:&.flexbox.vleft}
@@ -667,6 +668,9 @@ function add(x) {
 }
 var add2 = add(2)
 ```
+[slide]
+# 高阶组件 {:&.flexbox.vleft}
+![image](https://user-images.githubusercontent.com/5471228/28306817-6696f954-6bd3-11e7-8889-a5d8a6e2fe97.png)
 [slide]
 ## Immutability in Redux
 [slide]
