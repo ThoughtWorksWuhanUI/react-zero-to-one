@@ -459,7 +459,7 @@ https://github.com/benweizhu/react-redux-you-should-know
 
 Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a 	__stable identity__.
 [slide]
-## <span style="color:red">Keys</span> in List
+## <span style="color:red">No Keys</span> in List
 ```html
 <ul>
   <li>first</li>
@@ -683,20 +683,33 @@ function todoApp(state = initialState, action) {
   }
 }
 ```
+```javascript
+function todoApp(state = initialState, action) {
+  switch (action.type) {
+    case SET_VISIBILITY_FILTER:
+      return { ...state, visibilityFilter: action.filter }
+    default:
+      return state
+  }
+}
+```
 [slide]
 
-# shallow equality check {:&.flexbox.vleft}
+# React-Redux shallow equality check {:&.flexbox.vleft}
 
-Each time React-Redux’s connect function is called, it will perform a shallow equality check on its stored reference to the root state object, and the current root state object passed to it from the store.
+It assumes that the __wrapped component is pure__.
+
+It will perform a __shallow equality check__ on its stored reference to the __root state object__, and the current root state object passed to it from the store.
 
 If the check passes, the root state object has not been updated, and so there is __no need to re-render the component, or even call mapStateToProps__.
 [slide]
 # What about combineReducers? {:&.flexbox.vleft}
-combineReducers will construct a new state object __with the state slices returned from each reducer__.
+```javascript
+combineReducers({ todos: myTodosReducer, counter: myCounterReducer })
+```
 
-This new state object may or may not be different from the current state object.
+combineReducers performs a shallow equality check on the current __state slice__ and the state slice returned from the reducer. If the reducer returns a new object, the shallow equality check will fail, and combineReducers will set a hasChanged flag to true.
 
-It is here that combineReducers uses shallow equality checking to determine whether the state has changed.
 [slide]
 ## Sometime it still doesn't rendering？
 [slide]
@@ -725,11 +738,22 @@ function updateNestedState(state, action) {
 }
 ```
 [slide]
-# shallow check in connect {:&.flexbox.vleft}
+# shallow check in mapStateToProps {:&.flexbox.vleft}
 
-If the root state equality __check fails__, means, the root state object has been updated, and so connect will call mapStateToProps to see if the props for the wrapped component have been updated.
+If the root state equality __check fails__, connect will call mapStateToProps to see if the props for the wrapped component have been updated.
 
 It does this by performing __a shallow equality check__ on __each value within the object individually__, and will only trigger a re-render if one of those checks fails.
+
+```javascript
+function mapStateToProps(state) {
+  return {
+    todos: state.todos, // prop value
+    visibleTodos: getVisibleTodos(state) // selector
+  }
+}
+
+export default connect(mapStateToProps)(TodoApp)
+```
 
 [slide]
 # shallow check in connect {:&.flexbox.vleft}
@@ -810,6 +834,15 @@ export function createWidget(widget) {
 
 export function getWidget () {
   return dispatch => get('/widget').then(widget => dispatch(setWidget(widget)))
+}
+```
+[slide]
+## Alwasy re-rendering
+```
+const mapStateToProps = state => {
+  return {
+    objects: state.objectIds.map(id => state.objects[id])
+  }
 }
 ```
 [slide]
