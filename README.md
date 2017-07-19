@@ -26,7 +26,10 @@
 
 **slides**
 
+https://github.com/ksky521/nodeppt
+
 ```
+npm install -g nodeppt
 cd slides
 nodeppt start
 ```
