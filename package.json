@@ -6,6 +6,7 @@
   "author": "benweizhu <benweizhu@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "chunk": "webpack --display-chunks --display-modules",
     "build": "webpack",
     "dev": "webpack-dev-server --hot",
     "doc": "rm -rf ./dist && webpack && rm -rf ./docs/ && cp -rf ./dist ./docs"

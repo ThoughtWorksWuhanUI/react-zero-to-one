@@ -865,3 +865,71 @@ export function getWidget () {
   return dispatch => get('/widget').then(widget => dispatch(setWidget(widget)))
 }
 ```
+[slide]
+ ## 第三部分 React在产品环境下的性能优化
+[slide]
+
+## 只有10%~20%的最终用户响应时间花在了下载HTML文档上，其余的80%~90%时间花在了__下载页面中的所有组件__上。
+
+性能黄金法则，Steve Souders
+[slide]
+## 了解项目的模块
+[slide]
+## webpack chunks
+
+```sh
+webpack --display-chunks
+```
+
+<div style="text-align:left;">
+<div>
+Webpack has a feature to split your codebase into “chunks” which are loaded on demand.
+</div>
+</br>
+<div>
+Some other bundlers call them “layers”, “rollups”, or “fragments”.
+</div>
+</div>
+[slide]
+## webpack chunks
+<img src="http://benweizhu.github.io/images/react-production/webpack-output.png" width="700" alt="react ouput">
+[slide]
+其他分析模块的工具：
+
+[webpack-bundle-size-analyzer](https://github.com/robertknight/webpack-bundle-size-analyzer)
+
+[webpack-bundle-analyzer](https://github.com/th0r/webpack-bundle-analyzer)
+
+<img src="http://benweizhu.github.io/images/react-production/webpack-bundle-analyzer.gif" width="500" alt="webpack-bundle-analyzer.gif">
+
+[slide]
+
+# Code Splitting
+
+- Entries
+- CommonChunkPlugin
+- Dynamic Imports
+
+[slide]
+
+## Entries
+```javascript
+const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: {
+    index: './src/index.js',
+    another: './src/another-module.js'
+  },
+  plugins: [
+    new HTMLWebpackPlugin({
+      title: 'Code Splitting'
+    })
+  ],
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+```
