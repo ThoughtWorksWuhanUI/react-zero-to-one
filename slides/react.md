@@ -933,3 +933,70 @@ module.exports = {
   }
 };
 ```
+[slide]
+## CommonChunkPlugin
+
+```javascript
+var webpack = require('webpack');
+var path = require('path');
+
+module.exports = function(env) {
+    return {
+        entry: {
+            main: './index.js',
+            vendor: 'react', 'react-dom', 'react-redux', 'babel-polyfill']
+        },
+        output: {
+            filename: '[name].[chunkhash].js',
+            path: path.resolve(__dirname, 'dist')
+        },
+        plugins: [
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'vendor' // Specify the common bundle's name.
+            })
+        ]
+    }
+}
+
+```
+[slide]
+## React-Router按需分离Chunk
+
+ES2015 Loader spec中定义了一个import()方法可以在运行时动态加载ES2015的模块
+
+```javascript
+function determineDate() {
+  import('moment').then(function(moment) {
+    console.log(moment().format());
+  }).catch(function(err) {
+    console.log('Failed to load moment', err);
+  });
+}
+determineDate();
+```
+Webpack会将import()方法看做一个“代码分离点”
+[slide]
+
+```
+function errorLoading(error) {
+  throw new Error(`Dynamic page loading failed: ${error}`);
+}
+
+function loadRoute(cb) {
+  return module => cb(null, module.default);
+}
+
+<Router history={history} queryKey="false">
+  <Route path="/user" name="UserPage" getComponent={(location, cb) => {
+    System.import('./components/UserPage').then(loadRoute(cb, false)).catch(errorLoading)}}
+  />
+  <Route path="/data" name="DataPage" getComponent={(location, cb) => {
+    System.import('./components/DataPage').then(loadRoute(cb, false)).catch(errorLoading)}}
+  />
+  <Route path="/about" name="AboutPage" getComponent={(location, cb) => {
+    System.import('./components/AboutPage').then(loadRoute(cb, false)).catch(errorLoading)}}
+  />
+</Router>
+```
+Code splitting with React Router v4
+https://gist.github.com/acdlite/a68433004f9d6b4cbc83b5cc3990c194
