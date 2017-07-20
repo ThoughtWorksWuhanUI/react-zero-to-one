@@ -1011,12 +1011,35 @@ https://gist.github.com/acdlite/a68433004f9d6b4cbc83b5cc3990c194
 
 ```html
 <script async />
-```
 
-```html
 <script defer />
 ```
 
 ```javascript
 System.import('./map/china.js').then().catch(errorLoading);
+```
+[slide]
+## prefetch
+
+```html
+<link rel="prefetch" href="http://www.webhek.com/misc/3d-album/" />
+```
+[slide]
+## Webpack -p
+
+```javascript
+webpack --optimize-minimize --define process.env.NODE_ENV="'production'"
+```
+[slide]
+```javascript
+const config = {
+  // webpack config
+  devtool: NODE_ENV === ’' ? 'cheap-source-map' : 'cheap-module-inline-source-map',
+}
+```
+Webpack.config.js 和 产品代码
+```javascript
+process.env.NODE_ENV === 'production'
+
+if (process.env.NODE_ENV !== 'production') console.log('...')
 ```
