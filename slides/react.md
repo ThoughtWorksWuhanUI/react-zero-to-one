@@ -1000,3 +1000,23 @@ function loadRoute(cb) {
 ```
 Code splitting with React Router v4
 https://gist.github.com/acdlite/a68433004f9d6b4cbc83b5cc3990c194
+
+[slide]
+## JS异步（延迟）加载
+
+<img src="http://benweizhu.github.io/images/react-production/async-require.gif" alt="">
+[slide]
+
+## async, defer, System.import
+
+```html
+<script async />
+```
+
+```html
+<script defer />
+```
+
+```javascript
+System.import('./map/china.js').then().catch(errorLoading);
+```
