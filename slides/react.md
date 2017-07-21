@@ -1043,3 +1043,64 @@ process.env.NODE_ENV === 'production'
 
 if (process.env.NODE_ENV !== 'production') console.log('...')
 ```
+[slide]
+## Tree Shaking
+<image src="http://crowleypoliticalreport.typepad.com/.a/6a0133ed0b30dc970b01b7c87b050d970b-pi">
+[slide]
+## Tree Shaking
+<image src="http://benweizhu.github.io/images/react-production/tree-shake.png">
+[slide]
+## Tree Shaking
+```javascript
+// import the entire utils object with CommonJS
+var utils = require( 'utils' );
+var query = 'Rollup';
+// use the ajax method of the utils object
+utils.ajax( 'https://api.example.com?search=' + query ).then( handleResponse );
+```
+```javascipt
+// import the ajax function with an ES6 import statement
+import { ajax } from 'utils';
+var query = 'Rollup';
+// call the ajax function
+ajax( 'https://api.example.com?search=' + query ).then( handleResponse );
+```
+[slide]
+# 原因  {:&.flexbox.vleft}
+
+babel-preset-es2015 依赖于 transform-es2015-modules-commonjs
+
+babel-preset-es2015-native-modules is __DEPRECATED__
+
+use this:
+```javascript
+presets: [
+  ["es2015", { "modules": false }]
+]
+```
+[slide]
+# lodash
+
+```
+import isEqual from 'lodash/isEqual';
+```
+
+https://github.com/lodash/babel-plugin-lodash
+
+```
+import _ from 'lodash';
+import { add } from 'lodash/fp';
+
+const addOne = add(1);
+_.map([1, 2, 3], addOne);
+```
+transform to
+```
+import _add from 'lodash/fp/add';
+import _map from 'lodash/map';
+
+const addOne = _add(1);
+_map([1, 2, 3], addOne);
+```
+[slide]
+Babel对React代码的优化
