@@ -1103,4 +1103,23 @@ const addOne = _add(1);
 _map([1, 2, 3], addOne);
 ```
 [slide]
-Babel对React代码的优化
+## Babel优化一
+
+https://github.com/babel/babili
+
+![image](https://user-images.githubusercontent.com/5471228/28447103-5f5b162c-6e01-11e7-8072-3cc3b10d3574.png)
+[slide]
+## Babel优化一
+
+https://github.com/babel/babili
+```javascript
+{
+  "presets": ["es2015"],
+  "env": {
+    "production": {
+      "presets": ["babili"]
+    }
+  }
+}
+```
+
