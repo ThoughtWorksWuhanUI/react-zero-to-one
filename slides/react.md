@@ -1122,4 +1122,31 @@ https://github.com/babel/babili
   }
 }
 ```
+[slide]
+## client side vs server side
+
+[slide]
+## render on client side
+![image](https://cloud.githubusercontent.com/assets/10385585/15772984/0cc47cfe-29a7-11e6-94ad-3cd4b82daabb.png)
+
+[slide]
+## render on server side
+![image](https://cloud.githubusercontent.com/assets/10385585/15772996/1c5f64bc-29a7-11e6-800a-bd8b4af30b0f.png)
+
+[slide]
+https://blog.twitter.com/engineering/en_us/a/2012/improving-performance-on-twittercom.html
+
+[slide]
+## isomorphic
+Isomorphism as applied to web development means rendering pages on both the server and client side. 
+
+[slide]
+![image](https://cdn-images-1.medium.com/max/1600/0*oFwqQyEaOx29qW-U.png)
+
+[slide]
+## ReactDOMServer
+```
+renderToString();
+renderToStaticMarkup();
+```
 
